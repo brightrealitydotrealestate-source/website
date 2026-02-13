@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles for Bright Reality */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FAFAF5;
+  color: #3E2F0D;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.02em;
+  /* Adjusted for Poppins */
+}
+
+/* Override font-serif utility used in components */
+.font-serif {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Smooth transitions */
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar styling for browsers that support it */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAF5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9B104;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B09257;
+}
+
+/* Infinite scroll animation for plots scroller */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 35s linear infinite;
+  /* Mobile speed */
+}
+
+/* Moderate scrolling for tablets and larger screens */
+@media (min-width: 768px) {
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    /* Desktop speed */
+  }
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Service Highlight Animation */
+@keyframes highlight-card {
+  0% {
+    transform: scale(1);
+    background-color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: rgba(217, 177, 4, 0.1);
+  }
+
+  10% {
+    transform: scale(1.05);
+    background-color: #FFF9E5;
+    box-shadow: 0 25px 50px -12px rgba(217, 177, 4, 0.5);
+    border-color: #D9B104;
+  }
+
+  50% {
+    transform: scale(1.05);
+    background-color: #FFF9E5;
+    box-shadow: 0 25px 50px -12px rgba(217, 177, 4, 0.5);
+    border-color: #D9B104;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: rgba(217, 177, 4, 0.1);
+  }
+}
+
+.service-highlight {
+  animation: highlight-card 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  z-index: 20;
+  position: relative;
+}
