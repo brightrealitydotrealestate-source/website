@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles for Bright Reality */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FAFAF5;
+  color: #3E2F0D;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.02em;
+  /* Adjusted for Poppins */
+}
+
+/* Override font-serif utility used in components */
+.font-serif {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Smooth transitions */
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar styling for browsers that support it */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAF5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9B104;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B09257;
+}
+
+/* Infinite scroll animation for plots scroller */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 35s linear infinite;
+  /* Mobile speed */
+}
+
+/* Moderate scrolling for tablets and larger screens */
+@media (min-width: 768px) {
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    /* Desktop speed */
+  }
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Service Highlight Animation - Edge Glow Only */
+@keyframes highlight-card {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: rgba(217, 177, 4, 0.2);
+  }
+
+  10% {
+    transform: scale(1.02);
+    box-shadow:
+      0 0 0 3px rgba(217, 177, 4, 0.3),
+      0 0 20px 5px rgba(217, 177, 4, 0.4),
+      0 20px 40px -10px rgba(217, 177, 4, 0.3);
+    border-color: #D9B104;
+  }
+
+  50% {
+    transform: scale(1.02);
+    box-shadow:
+      0 0 0 3px rgba(217, 177, 4, 0.3),
+      0 0 20px 5px rgba(217, 177, 4, 0.4),
+      0 20px 40px -10px rgba(217, 177, 4, 0.3);
+    border-color: #D9B104;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: rgba(217, 177, 4, 0.2);
+  }
+}
+
+.service-highlight {
+  animation: highlight-card 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  z-index: 20;
+  position: relative;
+}
+
+/* Icon highlighting for service-highlight state */
+.service-highlight .icon-circle {
+  background-color: #D9B104 !important;
+  color: white !important;
+}
+
+/* Floating hover animation */
+@keyframes float-hover {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float-hover 2.5s ease-in-out infinite;
+}
+
+
+/* Smooth Page Entry Animation */
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-page-enter {
+  animation: page-enter 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+/* Hover Lift Animation */
+@keyframes hover-lift {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.hover-lift:hover {
+  animation: hover-lift 0.3s forwards ease-out;
+}
