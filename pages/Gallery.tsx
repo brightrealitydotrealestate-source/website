@@ -334,7 +334,11 @@ const Gallery: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-12 relative">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gold-deep mb-3 md:mb-4">
+<<<<<<< HEAD
             Our Gallery
+=======
+            Our Portfolio
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
           </h1>
 
           {/* Glossy Gradient Separator */}

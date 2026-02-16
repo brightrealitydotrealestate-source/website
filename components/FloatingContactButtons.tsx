@@ -114,6 +114,7 @@ const FloatingContactButtons: React.FC<FloatingContactButtonsProps> = ({
                     pointerEvents: isFooterVisible ? 'none' : 'auto'
                 }}
             >
+<<<<<<< HEAD
                 {/* Phone Call Button Wrapper */}
                 <div className="relative group">
                     <button
@@ -122,11 +123,21 @@ const FloatingContactButtons: React.FC<FloatingContactButtonsProps> = ({
                         aria-label="Call us"
                         style={{
                             boxShadow: `
+=======
+                {/* Phone Call Button with Bubble/Water Drop Effect */}
+                <button
+                    onClick={handlePhoneClick}
+                    className="group relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center active:scale-95 transition-transform overflow-hidden backdrop-blur-md bg-white/20 animate-float hover:animate-none hover:scale-110 transition-all duration-300"
+                    aria-label="Call us"
+                    style={{
+                        boxShadow: `
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                             0 8px 32px rgba(0, 0, 0, 0.1),
                             0 2px 8px rgba(0, 0, 0, 0.05),
                             inset 0 1px 2px rgba(255, 255, 255, 0.3),
                             inset 0 -2px 4px rgba(0, 0, 0, 0.05)
                         `
+<<<<<<< HEAD
                         }}
                     >
                         {/* Glossy shine effect */}
@@ -156,11 +167,34 @@ const FloatingContactButtons: React.FC<FloatingContactButtonsProps> = ({
                         style={{
                             animationDelay: '1.25s', // Stagger the float animation
                             boxShadow: `
+=======
+                    }}
+                >
+                    {/* Glossy shine effect */}
+                    <div
+                        className="absolute inset-0 rounded-full pointer-events-none"
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)'
+                        }}
+                    />
+                    <Phone size={24} className="relative text-gold z-10" strokeWidth={2.5} />
+                </button>
+
+                {/* WhatsApp Button with Bubble/Water Drop Effect */}
+                <button
+                    onClick={handleWhatsAppClick}
+                    className="group relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center active:scale-95 transition-transform overflow-hidden backdrop-blur-md bg-white/20 animate-float hover:animate-none hover:scale-110 transition-all duration-300"
+                    aria-label="WhatsApp us"
+                    style={{
+                        animationDelay: '1.25s', // Stagger the float animation
+                        boxShadow: `
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                             0 8px 32px rgba(0, 0, 0, 0.1),
                             0 2px 8px rgba(0, 0, 0, 0.05),
                             inset 0 1px 2px rgba(255, 255, 255, 0.3),
                             inset 0 -2px 4px rgba(0, 0, 0, 0.05)
                         `
+<<<<<<< HEAD
                         }}
                     >
                         {/* Glossy shine effect */}
@@ -180,6 +214,19 @@ const FloatingContactButtons: React.FC<FloatingContactButtonsProps> = ({
                         <span className="absolute right-[-5px] top-1/2 transform -translate-y-1/2 w-2.5 h-2.5 bg-white rotate-45 border-r border-t border-gold/10"></span>
                     </span>
                 </div>
+=======
+                    }}
+                >
+                    {/* Glossy shine effect */}
+                    <div
+                        className="absolute inset-0 rounded-full pointer-events-none"
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)'
+                        }}
+                    />
+                    <WhatsAppIcon size={26} className="relative text-green-600 z-10" />
+                </button>
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
             </div>
 
             {/* Call Dialog Popup (Desktop Only) */}
@@ -189,16 +236,24 @@ const FloatingContactButtons: React.FC<FloatingContactButtonsProps> = ({
                     onClick={handleCloseDialog}
                 >
                     <div
+<<<<<<< HEAD
                         className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 max-w-lg w-full relative border border-white/40"
                         onClick={(e) => e.stopPropagation()}
                         style={{
                             background: 'linear-gradient(135deg, rgba(250, 250, 245, 0.95) 0%, rgba(249, 216, 165, 0.9) 100%)',
                             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
+=======
+                        className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full relative"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                            background: 'linear-gradient(135deg, #FAFAF5 0%, #F9D8A5 100%)'
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                         }}
                     >
                         {/* Close Button */}
                         <button
                             onClick={handleCloseDialog}
+<<<<<<< HEAD
                             className="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors z-20 text-gold-deep/60 hover:text-gold-deep"
                             aria-label="Close dialog"
                         >
@@ -275,6 +330,77 @@ const FloatingContactButtons: React.FC<FloatingContactButtonsProps> = ({
                                 </button>
                             </div>
                         </div>
+=======
+                            className="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors"
+                            aria-label="Close dialog"
+                        >
+                            <X size={24} className="text-gold-deep" />
+                        </button>
+
+                        {/* Phone Icon */}
+                        <div className="flex justify-center mb-6">
+                            <div
+                                className="w-16 h-16 rounded-full flex items-center justify-center relative overflow-hidden"
+                                style={{
+                                    background: 'linear-gradient(135deg, #D9B104 0%, #B09257 100%)'
+                                }}
+                            >
+                                <div
+                                    className="absolute inset-0 rounded-full"
+                                    style={{
+                                        background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 50%, transparent 100%)'
+                                    }}
+                                />
+                                <Phone size={32} className="text-white relative z-10" strokeWidth={2.5} />
+                            </div>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-2xl font-bold text-gold-deep text-center mb-2">
+                            Call Us
+                        </h3>
+
+                        {/* Subtitle */}
+                        <p className="text-gold-dark text-center mb-6">
+                            Call this number for any kind of enquiry
+                        </p>
+
+                        {/* Phone Number Display */}
+                        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 mb-6 border border-gold/20">
+                            <p className="text-2xl font-bold text-gold-deep text-center tracking-wide">
+                                {phoneNumber}
+                            </p>
+                        </div>
+
+                        {/* Copy Button */}
+                        <button
+                            onClick={handleCopyNumber}
+                            className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden"
+                            style={{
+                                background: copied
+                                    ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)'
+                                    : 'linear-gradient(135deg, #D9B104 0%, #B09257 100%)'
+                            }}
+                        >
+                            <div
+                                className="absolute inset-0"
+                                style={{
+                                    background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%)'
+                                }}
+                            />
+                            {copied ? (
+                                <>
+                                    <Check size={20} className="relative z-10" />
+                                    <span className="relative z-10">Copied!</span>
+                                </>
+                            ) : (
+                                <>
+                                    <Copy size={20} className="relative z-10" />
+                                    <span className="relative z-10">Copy Number</span>
+                                </>
+                            )}
+                        </button>
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                     </div>
                 </div>
             )}

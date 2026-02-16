@@ -41,6 +41,7 @@ const Navbar: React.FC = () => {
       <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
+<<<<<<< HEAD
           <Link
             to="/"
             className="flex items-center group"
@@ -51,6 +52,9 @@ const Navbar: React.FC = () => {
               }
             }}
           >
+=======
+          <Link to="/" className="flex items-center group">
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
             <img
               src="/assets/images/logo.svg"
               alt={COMPANY_INFO.name}
@@ -80,6 +84,7 @@ const Navbar: React.FC = () => {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
+<<<<<<< HEAD
               <div className="flex items-center gap-1">
                 <Link
                   to="/services"
@@ -112,6 +117,17 @@ const Navbar: React.FC = () => {
                   <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
                 </button>
               </div>
+=======
+              <Link
+                to="/services"
+                className="flex items-center text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base"
+                onClick={(e) => {
+                  setServicesOpen(false);
+                }}
+              >
+                Services <ChevronDown size={16} className="ml-1" />
+              </Link>
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
 
               {/* Dropdown Menu */}
               <div
@@ -182,6 +198,7 @@ const Navbar: React.FC = () => {
           <Link
             to="/"
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
+<<<<<<< HEAD
             onClick={(e) => {
               if (location.pathname === '/') {
                 e.preventDefault();
@@ -189,12 +206,16 @@ const Navbar: React.FC = () => {
               }
               setMobileMenuOpen(false);
             }}
+=======
+            onClick={() => { setMobileMenuOpen(false); }}
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
           >
             Home
           </Link>
 
           <Link
             to="/aboutus"
+<<<<<<< HEAD
             onClick={(e) => {
               setMobileMenuOpen(false);
               // Handle scroll if already on the page
@@ -208,6 +229,9 @@ const Navbar: React.FC = () => {
                 }
               }
             }}
+=======
+            onClick={() => setMobileMenuOpen(false)}
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
           >
             About Us
@@ -223,6 +247,7 @@ const Navbar: React.FC = () => {
 
           {/* Services Collapsible Dropdown */}
           <div className="w-full flex flex-col items-center">
+<<<<<<< HEAD
             {/* Split Button for Mobile: Text navigates, Arrow toggles */}
             <div className="flex items-center gap-3">
               <Link
@@ -257,6 +282,18 @@ const Navbar: React.FC = () => {
                 }
               </button>
             </div>
+=======
+            <button
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              className="flex items-center gap-2 text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
+            >
+              Services
+              {mobileServicesOpen
+                ? <ChevronUp size={20} className="transition-transform duration-200" />
+                : <ChevronDown size={20} className="transition-transform duration-200" />
+              }
+            </button>
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
 
             {/* Submenu Items */}
             <div

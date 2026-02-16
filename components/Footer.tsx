@@ -65,6 +65,7 @@ const Footer: React.FC = () => {
             <h4 className="text-base md:text-lg font-bold text-gold uppercase tracking-normal mb-4 md:mb-5">
               Connect With Us
             </h4>
+<<<<<<< HEAD
             <div className="flex gap-2 md:gap-4 flex-wrap">
               {SOCIAL_LINKS.map((social, index) => {
                 const Icon = social.icon;
@@ -80,12 +81,18 @@ const Footer: React.FC = () => {
                 const isFirst = index === 0;
                 const isLast = index === SOCIAL_LINKS.length - 1;
 
+=======
+            <div className="flex space-x-4 flex-wrap gap-y-4">
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = social.icon;
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                 return (
                   <a
                     key={social.platform}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+<<<<<<< HEAD
                     className="relative p-2 md:p-3 rounded-full transition-all duration-300 shadow-md group bg-peach/30 text-gold-dark hover:text-white"
                     style={{
                       // @ts-ignore
@@ -114,6 +121,12 @@ const Footer: React.FC = () => {
                         `}
                       ></span>
                     </span>
+=======
+                    className="p-3 rounded-full transition-all duration-300 shadow-md group bg-peach/30 text-gold-dark hover:bg-gold hover:text-white"
+                    aria-label={social.platform}
+                  >
+                    <Icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                   </a>
                 );
               })}

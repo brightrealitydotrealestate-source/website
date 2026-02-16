@@ -13,7 +13,10 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-helmet-async": "^2.0.5",
+<<<<<<< HEAD
     "react-phone-number-input": "^3.4.14",
+=======
+>>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
     "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
