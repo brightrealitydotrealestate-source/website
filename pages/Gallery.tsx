@@ -338,15 +338,15 @@ const Gallery: React.FC = () => {
           </h1 >
 
           {/* Glossy Gradient Separator */}
-          < div className="h-[2px] w-32 md:w-48 bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-80 mx-auto" ></div >
+          <div className="h-[2px] w-32 md:w-48 bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-80 mx-auto"></div>
 
           <p className="mt-3 md:mt-4 text-gold-dark text-base md:text-lg font-sans px-4">
             A glimpse into the luxury and opulence we provide.
           </p>
-        </div >
+        </div>
 
         {/* Uniform Square Grid Layout - Optimized for All Devices */}
-        < div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6" >
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {
             GALLERY_ITEMS.map((item, index) => (
               <GalleryMediaItem
@@ -356,8 +356,8 @@ const Gallery: React.FC = () => {
               />
             ))
           }
-        </div >
-      </div >
+        </div>
+      </div>
 
       {/* True Modal Lightbox - Full Screen Overlay via Portal */}
       {
@@ -472,7 +472,7 @@ const Gallery: React.FC = () => {
           document.body
         )
       }
-    </div >
+    </div>
   );
 };
 
