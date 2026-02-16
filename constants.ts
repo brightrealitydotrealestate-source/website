@@ -122,7 +122,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const COMPANY_INFO = {
   name: "Bright Reality",
-  tagline: "An Oppertunity to Enrich Yourself",
+  tagline: "An Opportunity to Enrich Yourself",
   address: "No.62/2, 2nd Floor, South Sivan Koil Street, Vadapalani, Chennai - 600 026",
   email: "brightrealityrealestate@gmail.com",
   phone: "+91 98400 55492",
