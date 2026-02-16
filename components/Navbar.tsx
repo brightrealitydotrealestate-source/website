@@ -137,6 +137,21 @@ const Navbar: React.FC = () => {
 
             <Link
               to="/contact"
+              onClick={(e) => {
+                // If on contact page or home page (where contact section is), scroll to it
+                if (location.pathname === '/contact' || location.pathname === '/') {
+                  // e.preventDefault(); // Optional: depend on if you want URL to update
+                  setTimeout(() => {
+                    const element = document.getElementById('contact-section');
+                    if (element) {
+                      const headerOffset = 100;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }, 100);
+                }
+              }}
               className="px-6 md:px-7 lg:px-8 py-2 md:py-2.5 bg-gold hover:bg-gold-light text-white font-bold rounded-full shadow-lg hover:shadow-gold/50 transform hover:-translate-y-0.5 transition-all duration-300 text-sm lg:text-base tracking-normal"
             >
               CONTACT US

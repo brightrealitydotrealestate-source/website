@@ -237,16 +237,36 @@ button {
 }
 
 /* Phone Input Customization */
+.phone-input-container .PhoneInput {
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
 .PhoneInputInput {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
+  height: 100% !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .PhoneInputInput:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+
+/* Consistent height for all contact form text inputs */
+.phone-input-container~.group input[type="text"],
+.phone-input-container~.group input[type="email"],
+.group input[type="text"],
+.group input[type="email"] {
+  height: 52px;
+  min-height: 52px;
 }
 
 /* Continuous Pulse Animation */

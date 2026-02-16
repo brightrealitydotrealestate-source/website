@@ -18,7 +18,7 @@ import CustomCountrySelect from '../components/CustomCountrySelect';
 // Wrapper components to pass props to CustomCountrySelect
 // PhoneInput doesn't easily allow passing props to the countrySelectComponent directly without a wrapper or context.
 const CountrySelectLeft = (props: any) => <CustomCountrySelect {...props} align="left" />;
-const CountrySelectRight = (props: any) => <CustomCountrySelect {...props} align="right" />;
+const CountrySelectRight = (props: any) => <CustomCountrySelect {...props} align="left" />;
 
 const Home: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -481,48 +481,46 @@ const Home: React.FC = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* WhatsApp */}
-                  <div className="group phone-input-container">
-                    <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
-                      WhatsApp <span className="text-xs text-gold-dust lowercase font-normal">(Optional)</span>
-                    </label>
-                    <PhoneInput
-                      international={false}
-                      defaultCountry="IN"
-                      value={formState.whatsapp}
-                      onChange={(value) => {
-                        // Strict validation for Indian numbers (+91)
-                        if (value && value.startsWith('+91')) {
-                          const numberPart = value.slice(3);
-                          if (numberPart.length > 10) return;
-                        }
-                        setFormState(prev => ({ ...prev, whatsapp: value || '' }))
-                      }}
-                      className="block w-full pr-4 pl-0 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus-within:ring-2 focus-within:ring-gold focus-within:border-transparent transition-all"
-                      placeholder="Enter WhatsApp number"
-                      limitMaxLength={true}
-                      countrySelectComponent={CountrySelectLeft}
-                    />
-                  </div>
+                {/* WhatsApp */}
+                <div className="group phone-input-container">
+                  <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
+                    WhatsApp <span className="text-xs text-gold-dust lowercase font-normal">(Optional)</span>
+                  </label>
+                  <PhoneInput
+                    international={false}
+                    defaultCountry="IN"
+                    value={formState.whatsapp}
+                    onChange={(value) => {
+                      // Strict validation for Indian numbers (+91)
+                      if (value && value.startsWith('+91')) {
+                        const numberPart = value.slice(3);
+                        if (numberPart.length > 10) return;
+                      }
+                      setFormState(prev => ({ ...prev, whatsapp: value || '' }))
+                    }}
+                    className="block w-full py-3 pr-4 pl-0 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus-within:ring-2 focus-within:ring-gold focus-within:border-transparent transition-all"
+                    placeholder="Enter WhatsApp number"
+                    limitMaxLength={true}
+                    countrySelectComponent={CountrySelectLeft}
+                  />
+                </div>
 
-                  {/* Mobile */}
-                  <div className="group phone-input-container">
-                    <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
-                      Mobile Number
-                    </label>
-                    <PhoneInput
-                      international={false}
-                      defaultCountry="IN"
-                      value={formState.mobile}
-                      onChange={handleMobileChange}
-                      className="block w-full pr-4 pl-0 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus-within:ring-2 focus-within:ring-gold focus-within:border-transparent transition-all"
-                      placeholder="Enter mobile number"
-                      limitMaxLength={true}
-                      countrySelectComponent={CountrySelectRight}
-                      required
-                    />
-                  </div>
+                {/* Mobile */}
+                <div className="group phone-input-container">
+                  <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
+                    Mobile Number
+                  </label>
+                  <PhoneInput
+                    international={false}
+                    defaultCountry="IN"
+                    value={formState.mobile}
+                    onChange={handleMobileChange}
+                    className="block w-full py-3 pr-4 pl-0 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus-within:ring-2 focus-within:ring-gold focus-within:border-transparent transition-all"
+                    placeholder="Enter mobile number"
+                    limitMaxLength={true}
+                    countrySelectComponent={CountrySelectRight}
+                    required
+                  />
                 </div>
 
                 {/* Email */}
