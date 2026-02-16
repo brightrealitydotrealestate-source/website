@@ -86,7 +86,4 @@ For generic servers, you may need to configure your web server (Nginx/Apache) to
 ---
 
 © 2026 Bright Reality. All Rights Reserved.
-<<<<<<< HEAD
-=======
-# website
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
+

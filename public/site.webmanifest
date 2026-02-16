@@ -1,31 +1,18 @@
 {
-<<<<<<< HEAD
   "name": "Bright Reality",
   "short_name": "Bright Reality",
-=======
-  "name": "MyWebSite",
-  "short_name": "MySite",
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-<<<<<<< HEAD
       "purpose": "any maskable"
-=======
-      "purpose": "maskable"
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
     },
     {
       "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-<<<<<<< HEAD
       "purpose": "any maskable"
-=======
-      "purpose": "maskable"
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
     }
   ],
   "theme_color": "#ffffff",

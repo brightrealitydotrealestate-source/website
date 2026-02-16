@@ -7,7 +7,6 @@ import ServiceHighlights from '../components/ServiceHighlights';
 import HeroHighlight from '../components/HeroHighlight';
 import FAQSection from '../components/FAQSection';
 import { Send, Map as MapIcon, MapPin } from 'lucide-react';
-<<<<<<< HEAD
 import { COMPANY_INFO, SERVICES } from '../constants';
 import AboutUsSection from '../components/AboutUsSection';
 import ConfirmationPopup from '../components/ConfirmationPopup';
@@ -20,11 +19,6 @@ import CustomCountrySelect from '../components/CustomCountrySelect';
 // PhoneInput doesn't easily allow passing props to the countrySelectComponent directly without a wrapper or context.
 const CountrySelectLeft = (props: any) => <CustomCountrySelect {...props} align="left" />;
 const CountrySelectRight = (props: any) => <CustomCountrySelect {...props} align="right" />;
-=======
-import { COMPANY_INFO, ABOUT_US_IMAGE, SERVICES } from '../constants';
-import ConfirmationPopup from '../components/ConfirmationPopup';
-import SEO from '../components/SEO';
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
 
 const Home: React.FC = () => {
   const [formState, setFormState] = useState({
@@ -38,10 +32,7 @@ const Home: React.FC = () => {
   const [toastMessage, setToastMessage] = useState('');
   const [toastType, setToastType] = useState<'success' | 'error' | 'loading'>('success');
   const [isSubmitting, setIsSubmitting] = useState(false);
-<<<<<<< HEAD
   const [emailError, setEmailError] = useState('');
-=======
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
 
   const location = useLocation();
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
@@ -150,7 +141,6 @@ const Home: React.FC = () => {
     }
   }, [location.pathname, serviceSlug]);
 
-<<<<<<< HEAD
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
@@ -175,52 +165,6 @@ const Home: React.FC = () => {
     }
 
     setFormState(prev => ({ ...prev, mobile: value }));
-=======
-  // Phone formatting logic
-  const formatPhoneNumber = (value: string) => {
-    // Remove all non-numeric characters except +
-    let cleaned = value.replace(/[^\d+]/g, '');
-
-    // Ensure + is only at the start
-    if (cleaned.includes('+')) {
-      cleaned = '+' + cleaned.replace(/\+/g, '');
-    }
-
-    // Auto-formatting based on country code
-    if (cleaned.startsWith('+91')) {
-      // Format: +91 XXXXX XXXXX
-      const match = cleaned.match(/^(\+91)(\d{0,5})(\d{0,5})$/);
-      if (match) {
-        return [match[1], match[2], match[3]].filter(Boolean).join(' ');
-      }
-    } else if (cleaned.startsWith('+1')) {
-      // Format: +1 XXX XXX XXXX
-      const match = cleaned.match(/^(\+1)(\d{0,3})(\d{0,3})(\d{0,4})$/);
-      if (match) {
-        return [match[1], match[2], match[3], match[4]].filter(Boolean).join(' ');
-      }
-    }
-
-    return cleaned;
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-
-    // Restrict mobile and whatsapp to numbers and +, and apply formatting
-    if (name === 'mobile' || name === 'whatsapp') {
-      // Allow + only at the beginning, otherwise nums only
-      if (!/^[+]?[0-9\s]*$/.test(value)) {
-        return;
-      }
-
-      const formattedValue = formatPhoneNumber(value);
-      setFormState(prev => ({ ...prev, [name]: formattedValue }));
-      return;
-    }
-
-    setFormState(prev => ({ ...prev, [name]: value }));
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -237,7 +181,6 @@ const Home: React.FC = () => {
     const SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
 
     try {
-<<<<<<< HEAD
       // Relaxed Email Validation
       // Accept as long as it has an @ symbol, deferring to browser type="email"
       if (!formState.email || !formState.email.includes('@')) {
@@ -248,27 +191,14 @@ const Home: React.FC = () => {
       }
 
       // Basic validation
-=======
-      // Strict Email Validation Regex ("Fact Check")
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formState.email)) {
-        throw new Error("Please enter a valid email address.");
-      }
-
-      // Basic validation (WhatsApp is optional now)
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
       if (!formState.name || !formState.mobile || !formState.message) {
         throw new Error("Please fill in all required fields.");
       }
 
-<<<<<<< HEAD
       // Verify Mobile Number strictly before sending
       if (formState.mobile && !isValidPhoneNumber(formState.mobile)) {
         throw new Error("Please enter a valid mobile number for the selected country.");
       }
-
-=======
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
       // If the URL is still the placeholder, we'll simulate a success for testing UI
       if (SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL") {
         console.warn("Google Apps Script URL not set. Simulating success.");
@@ -282,7 +212,6 @@ const Home: React.FC = () => {
         return;
       }
 
-<<<<<<< HEAD
       // 1. Send request with 'cors' mode to properly handle response
       const response = await fetch(SCRIPT_URL, {
         method: "POST",
@@ -313,36 +242,6 @@ const Home: React.FC = () => {
       console.error("Error submitting form:", error);
       setToastMessage(error.message || "Something Went Wrong. Please try again later.");
       setToastType('error');
-=======
-      const response = await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors", // Important for Google Apps Script
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formState,
-          // Prepend ' to phone numbers to force Google Sheets to treat them as text
-          // This prevents the #ERROR! caused by values starting with +
-          mobile: formState.mobile ? `'${formState.mobile}` : '',
-          whatsapp: formState.whatsapp ? `'${formState.whatsapp}` : '',
-        }),
-      });
-
-      // With no-cors, we can't check response.ok or response.json()
-      // We assume success if no network error occurred
-      // Update to success state ONLY after fetch completes
-      setToastMessage("Thanks For Showing Interest, Will Call You Shortly");
-      setToastType('success');
-      // Keep confirmation shown
-      setFormState({ name: '', whatsapp: '', mobile: '', email: '', message: '' });
-
-    } catch (error: any) {
-      console.error("Error submitting form:", error);
-      setToastMessage(error.message || "Something Went Wrong Try again later");
-      setToastType('error');
-      // Keep confirmation shown
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
     } finally {
       setIsSubmitting(false);
     }
@@ -389,51 +288,7 @@ const Home: React.FC = () => {
       <AvailablePlotsScroller />
 
       {/* About Us Section */}
-<<<<<<< HEAD
       <AboutUsSection />
-=======
-      <section id="about-section" className="py-10 md:py-14 bg-white relative overflow-hidden">
-        {/* Background decorative blob */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-peach/10 -skew-x-12 transform translate-x-20 pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            {/* Image (4:5 Ratio) */}
-            <div className="w-full md:w-5/12 relative group">
-
-              <div className="aspect-square overflow-hidden rounded-full shadow-2xl relative z-10 border-4 border-gold/20">
-                <img
-                  src={ABOUT_US_IMAGE}
-                  alt="About Bright Reality"
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="w-full md:w-7/12">
-              <h4 className="text-gold font-bold tracking-widest uppercase mb-2 text-xs md:text-sm">Hello, dear friends</h4>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-gold-deep mb-4 md:mb-5 leading-tight">
-                Bright Realty is located in Vadapalani <span className="text-gold-dark">  An Exceptional Real Estate Company</span>
-              </h2>
-              <p className="text-base md:text-lg text-gold-deep/80 leading-relaxed mb-4 md:mb-5 font-sans">
-                At Bright Reality, we provide services for you anywhere around Chennai. Whether you are looking for a land plot, a villa, a flat, an individual house, or even a resale house—whatever you need, you can get in touch with Us.
-              </p>
-              <p className="text-base md:text-lg text-gold-deep/80 leading-relaxed mb-5 md:mb-6 font-sans">
-                So, if you have any doubts regarding buying a house or a plot, or specific doubts regarding the Patta (land deed) or EC (Encumbrance Certificate), if you contact Us, We will resolve your doubts.
-              </p>
-              <p className="text-base md:text-lg text-gold-deep/80 leading-relaxed mb-5 md:mb-6 font-sans">
-                Bright Reality, is a company with good experience. It is being run by experienced professionals. We have successfully completed over one lakh (100,000) registrations. So, Our company has earned a reputation for being an auspicious ('Kairasi') company.
-              </p>
-              <div className="flex items-center space-x-4">
-                <div className="h-1 w-12 md:w-16 bg-gold"></div>
-                <span className="font-serif italic text-gold-dark text-lg md:text-xl">The Future is Bright.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
 
       {/* Service Highlights Section */}
       <ServiceHighlights />
@@ -586,14 +441,8 @@ const Home: React.FC = () => {
                   src={COMPANY_INFO.mapEmbedSrc}
                   width="100%"
                   height="100%"
-<<<<<<< HEAD
                   allowFullScreen={true}
                   loading="eager"
-=======
-                  style={{ border: 0, filter: 'grayscale(0.2) sepia(0.1)' }}
-                  allowFullScreen={true}
-                  loading="lazy"
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                   className="w-full h-full"
                 ></iframe>
 
@@ -634,7 +483,6 @@ const Home: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* WhatsApp */}
-<<<<<<< HEAD
                   <div className="group phone-input-container">
                     <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
                       WhatsApp <span className="text-xs text-gold-dust lowercase font-normal">(Optional)</span>
@@ -655,24 +503,10 @@ const Home: React.FC = () => {
                       placeholder="Enter WhatsApp number"
                       limitMaxLength={true}
                       countrySelectComponent={CountrySelectLeft}
-=======
-                  <div className="group">
-                    <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
-                      WhatsApp <span className="text-xs text-gold-dust lowercase font-normal">(w/ Code) - Optional</span>
-                    </label>
-                    <input
-                      type="tel"
-                      name="whatsapp"
-                      value={formState.whatsapp}
-                      onChange={handleInputChange}
-                      className="block w-full px-4 py-3 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
-                      placeholder="+91 9000010000"
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                     />
                   </div>
 
                   {/* Mobile */}
-<<<<<<< HEAD
                   <div className="group phone-input-container">
                     <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
                       Mobile Number
@@ -686,19 +520,6 @@ const Home: React.FC = () => {
                       placeholder="Enter mobile number"
                       limitMaxLength={true}
                       countrySelectComponent={CountrySelectRight}
-=======
-                  <div className="group">
-                    <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
-                      Mobile Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="mobile"
-                      value={formState.mobile}
-                      onChange={handleInputChange}
-                      className="block w-full px-4 py-3 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
-                      placeholder="+91 9000010000"
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                       required
                     />
                   </div>
@@ -713,7 +534,6 @@ const Home: React.FC = () => {
                     type="email"
                     name="email"
                     value={formState.email}
-<<<<<<< HEAD
                     onChange={(e) => {
                       handleInputChange(e);
                       if (emailError) setEmailError('');
@@ -737,13 +557,6 @@ const Home: React.FC = () => {
                   {emailError && (
                     <p className="text-red-500 text-xs mt-1 ml-1">{emailError}</p>
                   )}
-=======
-                    onChange={handleInputChange}
-                    className="block w-full px-4 py-3 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
-                    placeholder="you@example.com"
-                    required
-                  />
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                 </div>
 
                 {/* Message */}
@@ -767,16 +580,10 @@ const Home: React.FC = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-<<<<<<< HEAD
                   disabled={isSubmitting}
                   className="w-full py-4 bg-gradient-to-r from-gold to-gold-light text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-gold/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="mr-2" size={20} /> {isSubmitting ? 'Sending...' : 'Send Message'}
-=======
-                  className="w-full py-4 bg-gradient-to-r from-gold to-gold-light text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-gold/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center uppercase tracking-widest"
-                >
-                  <Send className="mr-2" size={20} /> Send Message
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
                 </button>
 
               </form>

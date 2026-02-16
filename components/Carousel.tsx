@@ -11,15 +11,12 @@ const Carousel: React.FC = () => {
     SLIDES[0]
   ];
 
-<<<<<<< HEAD
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-=======
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
   const [currentIndex, setCurrentIndex] = useState(1); // Start at index 1 (the first real slide)
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -110,12 +107,8 @@ const Carousel: React.FC = () => {
 
   return (
     <div
-<<<<<<< HEAD
       className={`relative w-full aspect-video overflow-hidden group shadow-2xl rounded-lg bg-black transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}
-=======
-      className="relative w-full aspect-video overflow-hidden group shadow-2xl rounded-lg bg-black"
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={onTouchStart}
@@ -160,33 +153,19 @@ const Carousel: React.FC = () => {
       {/* Left Arrow - Visible on all devices, smaller on mobile */}
       <button
         onClick={prevSlide}
-<<<<<<< HEAD
         className="absolute left-2 lg:left-8 top-1/2 -translate-y-1/2 text-white hover:text-gold-light transition-all duration-300 transform hover:scale-110 drop-shadow-lg p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 group-hover:opacity-100 opacity-70 lg:opacity-0"
         aria-label="Previous Slide"
       >
         <ChevronLeft className="w-5 h-5 lg:w-8 lg:h-8" strokeWidth={2} />
-=======
-        className="absolute left-2 lg:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-gold-light transition-all duration-300 transform hover:scale-125 drop-shadow-lg lg:opacity-0 lg:group-hover:opacity-100"
-        aria-label="Previous Slide"
-      >
-        <ChevronLeft className="w-4 h-4 lg:w-12 lg:h-12" strokeWidth={1.5} />
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
       </button>
 
       {/* Right Arrow - Visible on all devices, smaller on mobile */}
       <button
         onClick={nextSlide}
-<<<<<<< HEAD
         className="absolute right-2 lg:right-8 top-1/2 -translate-y-1/2 text-white hover:text-gold-light transition-all duration-300 transform hover:scale-110 drop-shadow-lg p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 group-hover:opacity-100 opacity-70 lg:opacity-0"
         aria-label="Next Slide"
       >
         <ChevronRight className="w-5 h-5 lg:w-8 lg:h-8" strokeWidth={2} />
-=======
-        className="absolute right-2 lg:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-gold-light transition-all duration-300 transform hover:scale-125 drop-shadow-lg lg:opacity-0 lg:group-hover:opacity-100"
-        aria-label="Next Slide"
-      >
-        <ChevronRight className="w-4 h-4 lg:w-12 lg:h-12" strokeWidth={1.5} />
->>>>>>> 70af73cd5e1c2bda10e3b8ccc50863fb6058d301
       </button>
 
       {/* Glossy Dot Indicators - 50% smaller */}
