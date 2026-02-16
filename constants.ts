@@ -137,6 +137,11 @@ export const ABOUT_US_FOUNDER_IMAGE = "/assets/images/founder.png"; // User can 
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   { type: 'image', src: "/assets/images/brightrealitychenani.jpeg", alt: "Bright Reality Real Estate Company in Chennai" },
+  { type: 'image', src: "/assets/images/Site Visit.jpeg", alt: "Site Visit" },
+  { type: 'image', src: "/assets/images/Property Registration.jpeg", alt: "Property Registration" },
+  { type: 'image', src: "/assets/images/Ready Plots for Sale in Chennai.jpeg", alt: "Ready Plots for Sale in Chennai" },
+  { type: 'image', src: "/assets/images/Seamless Property Registration By Bright Reality Real Estate Chennai.jpeg", alt: "Seamless Property Registration By Bright Reality Real Estate Chennai" },
+  { type: 'image', src: "/assets/images/Real Estate Company Chennai.jpeg", alt: "Real Estate Company Chennai" },
   { type: 'image', src: "/assets/images/CMDA Approved Plots in Avadi.png", alt: "CMDA Approved Plots in Avadi" },
   { type: 'image', src: "/assets/images/Low Budget Plots Around Ponamallee.png", alt: "Low Budget Plots Around Ponamallee" },
   { type: 'image', src: "/assets/images/Available Plots In Sriperumbhur Surrounding.png", alt: "Available Plots In Sriperumbhur Surrounding" },
@@ -154,7 +159,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { type: 'video', src: "/assets/videos/BR.mp4", alt: "About Bright Reality" },
   { type: 'image', src: "/assets/images/propertiesinkodaikanal.jpeg", alt: "Properties in Kodaikanal" },
   { type: 'image', src: "/assets/images/propertiesavailableinkodaikanal.jpeg", alt: "Properties Available in Kodaikanal" },
-  { type: 'video', src: "https://v1.pinimg.com/videos/mc/720p/29/ef/52/29ef526285821ff585be9de512a1783f.mp4", alt: "Gated Community Appartment in Avadi" },
   { type: 'image', src: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXeGGe4ZtkJ8eNTlY7iWsNgVS_lLegysxQOhMK04a6qnWxn3DYsRtIpf6usgMVxpphvIxwu98tzxgxUT-Hp8V6SDzPgUzlRpfh7T_TbEdXN_FVx40Uau5zGAly7lYxI7LibISq779rtDN2ZoPZi3eI0?key=qF8Y8X7g422MQiWtFYG0Rg", alt: "On road properties around over all the chennai" },
   { type: 'image', src: "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/4d/46/af/kodaikanal.jpg", alt: "hill station properties in tamil nadu" },
 ];
