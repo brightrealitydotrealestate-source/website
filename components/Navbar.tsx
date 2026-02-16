@@ -41,7 +41,16 @@ const Navbar: React.FC = () => {
       <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <Link to="/" className="flex items-center group">
+          <Link
+            to="/"
+            className="flex items-center group"
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
             <img
               src="/assets/images/logo.svg"
               alt={COMPANY_INFO.name}
@@ -71,15 +80,38 @@ const Navbar: React.FC = () => {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <Link
-                to="/services"
-                className="flex items-center text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base"
-                onClick={(e) => {
-                  setServicesOpen(false);
-                }}
-              >
-                Services <ChevronDown size={16} className="ml-1" />
-              </Link>
+              <div className="flex items-center gap-1">
+                <Link
+                  to="/services"
+                  className="text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base cursor-pointer"
+                  onClick={(e) => {
+                    // Navigate only
+                    setServicesOpen(false);
+                    if (location.pathname === '/services') {
+                      const element = document.getElementById('services-section');
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }
+                  }}
+                >
+                  Services
+                </Link>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setServicesOpen(!servicesOpen);
+                  }}
+                  className="text-gold-deep hover:text-gold focus:outline-none p-1"
+                  aria-label="Toggle Services Menu"
+                >
+                  <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
 
               {/* Dropdown Menu */}
               <div
@@ -150,14 +182,32 @@ const Navbar: React.FC = () => {
           <Link
             to="/"
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
-            onClick={() => { setMobileMenuOpen(false); }}
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+              setMobileMenuOpen(false);
+            }}
           >
             Home
           </Link>
 
           <Link
             to="/aboutus"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              // Handle scroll if already on the page
+              if (location.pathname === '/aboutus') {
+                const element = document.getElementById('about-section');
+                if (element) {
+                  const headerOffset = 100;
+                  const elementPosition = element.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+              }
+            }}
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
           >
             About Us
@@ -173,16 +223,40 @@ const Navbar: React.FC = () => {
 
           {/* Services Collapsible Dropdown */}
           <div className="w-full flex flex-col items-center">
-            <button
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="flex items-center gap-2 text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
-            >
-              Services
-              {mobileServicesOpen
-                ? <ChevronUp size={20} className="transition-transform duration-200" />
-                : <ChevronDown size={20} className="transition-transform duration-200" />
-              }
-            </button>
+            {/* Split Button for Mobile: Text navigates, Arrow toggles */}
+            <div className="flex items-center gap-3">
+              <Link
+                to="/services"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (location.pathname === '/services') {
+                    const element = document.getElementById('services-section');
+                    if (element) {
+                      const headerOffset = 100;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }
+                }}
+                className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
+              >
+                Services
+              </Link>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMobileServicesOpen(!mobileServicesOpen);
+                }}
+                className="p-2 text-gold-deep hover:text-gold transition-colors"
+                aria-label="Toggle Services Submenu"
+              >
+                {mobileServicesOpen
+                  ? <ChevronUp size={20} className="transition-transform duration-200" />
+                  : <ChevronDown size={20} className="transition-transform duration-200" />
+                }
+              </button>
+            </div>
 
             {/* Submenu Items */}
             <div
