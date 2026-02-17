@@ -334,8 +334,8 @@ const Gallery: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-12 relative">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gold-deep mb-3 md:mb-4">
-            Our Portfolio
-          </h1>
+            Our Gallery
+          </h1 >
 
           {/* Glossy Gradient Separator */}
           <div className="h-[2px] w-32 md:w-48 bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-80 mx-auto"></div>
@@ -347,127 +347,131 @@ const Gallery: React.FC = () => {
 
         {/* Uniform Square Grid Layout - Optimized for All Devices */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-          {GALLERY_ITEMS.map((item, index) => (
-            <GalleryMediaItem
-              key={index}
-              item={item}
-              onClick={() => openLightbox(index)}
-            />
-          ))}
+          {
+            GALLERY_ITEMS.map((item, index) => (
+              <GalleryMediaItem
+                key={index}
+                item={item}
+                onClick={() => openLightbox(index)}
+              />
+            ))
+          }
         </div>
       </div>
 
       {/* True Modal Lightbox - Full Screen Overlay via Portal */}
-      {lightboxOpen && createPortal(
-        <div
-          className="fixed inset-0 z-[999999] bg-black/70 backdrop-blur-md"
-          style={{
-            touchAction: 'none',
-            overscrollBehavior: 'none',
-            WebkitOverflowScrolling: 'auto'
-          }}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          onWheel={handleWheel}
-        >
-          {/* Close Button - Enhanced Visibility */}
-          <button
-            className="absolute top-4 right-4 md:top-6 md:right-6 text-white bg-black/50 hover:bg-gold-deep p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 z-[10001] shadow-2xl border-2 border-white/30 hover:border-gold-light"
-            onClick={closeLightbox}
-            aria-label="Close"
-          >
-            <X size={28} className="md:w-8 md:h-8" strokeWidth={2.5} />
-          </button>
-
-          {/* Navigation Arrows - Desktop Only - Enhanced */}
-          <button
-            className="absolute left-4 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-gold-deep p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 z-[10000] hidden md:flex items-center justify-center shadow-2xl border-2 border-white/30 hover:border-gold-light"
-            onClick={prevImage}
-            aria-label="Previous"
-          >
-            <ChevronLeft size={32} className="lg:w-10 lg:h-10" strokeWidth={2.5} />
-          </button>
-
-          <button
-            className="absolute right-4 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-gold-deep p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 z-[10000] hidden md:flex items-center justify-center shadow-2xl border-2 border-white/30 hover:border-gold-light"
-            onClick={nextImage}
-            aria-label="Next"
-          >
-            <ChevronRight size={32} className="lg:w-10 lg:h-10" strokeWidth={2.5} />
-          </button>
-
-          {/* Media Container with Zoom Support */}
+      {
+        lightboxOpen && createPortal(
           <div
-            className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onDoubleClick={handleDoubleClick}
+            className="fixed inset-0 z-[999999] bg-black/70 backdrop-blur-md"
+            style={{
+              touchAction: 'none',
+              overscrollBehavior: 'none',
+              WebkitOverflowScrolling: 'auto'
+            }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onWheel={handleWheel}
           >
-            <div
-              className="relative w-full h-full flex items-center justify-center"
-              style={{
-                cursor: scale > 1 ? 'move' : 'default'
-              }}
+            {/* Close Button - Enhanced Visibility */}
+            <button
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-white bg-black/50 hover:bg-gold-deep p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 z-[10001] shadow-2xl border-2 border-white/30 hover:border-gold-light"
+              onClick={closeLightbox}
+              aria-label="Close"
             >
-              {GALLERY_ITEMS[currentIdx].type === 'video' ? (
-                <video
-                  controls
-                  autoPlay
-                  className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl rounded-lg"
-                  src={GALLERY_ITEMS[currentIdx].src}
-                  onClick={handleVideoClick}
-                >
-                  Your browser does not support the video tag.
-                </video>
-              ) : (
-                <img
-                  src={GALLERY_ITEMS[currentIdx].src}
-                  alt={GALLERY_ITEMS[currentIdx].alt}
-                  className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl rounded-lg"
-                  style={{
-                    transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
-                    transformOrigin: 'center center'
-                  }}
-                  draggable={false}
-                />
-              )}
-            </div>
-          </div>
+              <X size={28} className="md:w-8 md:h-8" strokeWidth={2.5} />
+            </button>
 
-          {/* Zoom Indicator - Auto-hiding */}
-          {false && scale > 1 && GALLERY_ITEMS[currentIdx].type !== 'video' && (
+            {/* Navigation Arrows - Desktop Only - Enhanced */}
+            <button
+              className="absolute left-4 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-gold-deep p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 z-[10000] hidden md:flex items-center justify-center shadow-2xl border-2 border-white/30 hover:border-gold-light"
+              onClick={prevImage}
+              aria-label="Previous"
+            >
+              <ChevronLeft size={32} className="lg:w-10 lg:h-10" strokeWidth={2.5} />
+            </button>
+
+            <button
+              className="absolute right-4 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-gold-deep p-3 md:p-4 rounded-full backdrop-blur-sm transition-all duration-300 z-[10000] hidden md:flex items-center justify-center shadow-2xl border-2 border-white/30 hover:border-gold-light"
+              onClick={nextImage}
+              aria-label="Next"
+            >
+              <ChevronRight size={32} className="lg:w-10 lg:h-10" strokeWidth={2.5} />
+            </button>
+
+            {/* Media Container with Zoom Support */}
             <div
-              className={`absolute top-4 left-4 md:top-6 md:left-6 text-white bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm text-sm md:text-base font-sans z-[10000] border border-white/30 transition-opacity duration-500 ${showOverlays ? 'opacity-100' : 'opacity-0'
+              className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onDoubleClick={handleDoubleClick}
+            >
+              <div
+                className="relative w-full h-full flex items-center justify-center"
+                style={{
+                  cursor: scale > 1 ? 'move' : 'default'
+                }}
+              >
+                {GALLERY_ITEMS[currentIdx].type === 'video' ? (
+                  <video
+                    controls
+                    autoPlay
+                    className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl rounded-lg"
+                    src={GALLERY_ITEMS[currentIdx].src}
+                    onClick={handleVideoClick}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img
+                    src={GALLERY_ITEMS[currentIdx].src}
+                    alt={GALLERY_ITEMS[currentIdx].alt}
+                    className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl rounded-lg"
+                    style={{
+                      transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
+                      transformOrigin: 'center center'
+                    }}
+                    draggable={false}
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* Zoom Indicator - Auto-hiding */}
+            {false && scale > 1 && GALLERY_ITEMS[currentIdx].type !== 'video' && (
+              <div
+                className={`absolute top-4 left-4 md:top-6 md:left-6 text-white bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm text-sm md:text-base font-sans z-[10000] border border-white/30 transition-opacity duration-500 ${showOverlays ? 'opacity-100' : 'opacity-0'
+                  }`}
+              >
+                {Math.round(scale * 100)}%
+              </div>
+            )}
+
+            {/* Image Info - Bottom Center - Auto-hiding */}
+            <div
+              className={`absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 text-white/90 font-sans tracking-wide text-xs sm:text-sm md:text-base bg-black/50 px-4 sm:px-6 py-2 sm:py-3 rounded-full backdrop-blur-sm max-w-[90vw] text-center border border-white/30 transition-opacity duration-500 ${showOverlays ? 'opacity-100' : 'opacity-0'
                 }`}
             >
-              {Math.round(scale * 100)}%
+              {currentIdx + 1} / {GALLERY_ITEMS.length} — {GALLERY_ITEMS[currentIdx].alt}
             </div>
-          )}
 
-          {/* Image Info - Bottom Center - Auto-hiding */}
-          <div
-            className={`absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 text-white/90 font-sans tracking-wide text-xs sm:text-sm md:text-base bg-black/50 px-4 sm:px-6 py-2 sm:py-3 rounded-full backdrop-blur-sm max-w-[90vw] text-center border border-white/30 transition-opacity duration-500 ${showOverlays ? 'opacity-100' : 'opacity-0'
-              }`}
-          >
-            {currentIdx + 1} / {GALLERY_ITEMS.length} — {GALLERY_ITEMS[currentIdx].alt}
-          </div>
-
-          {/* Swipe Instruction - Mobile Only - Auto-hiding */}
-          {false && <div className="md:hidden absolute bottom-4 sm:bottom-6 left-0 w-full flex justify-center z-[10000]">
-            <div
-              className={`bg-black/50 backdrop-blur-sm px-6 py-3 rounded-full text-white text-sm font-sans border border-white/30 transition-opacity duration-500 ${showOverlays ? 'opacity-100' : 'opacity-0'
-                }`}
-            >
-              ← Swipe to navigate →
-            </div>
-          </div>}
-        </div>,
-        document.body
-      )}
+            {/* Swipe Instruction - Mobile Only - Auto-hiding */}
+            {false && <div className="md:hidden absolute bottom-4 sm:bottom-6 left-0 w-full flex justify-center z-[10000]">
+              <div
+                className={`bg-black/50 backdrop-blur-sm px-6 py-3 rounded-full text-white text-sm font-sans border border-white/30 transition-opacity duration-500 ${showOverlays ? 'opacity-100' : 'opacity-0'
+                  }`}
+              >
+                ← Swipe to navigate →
+              </div>
+            </div>}
+          </div>,
+          document.body
+        )
+      }
     </div>
   );
 };

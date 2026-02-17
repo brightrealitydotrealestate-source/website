@@ -1,12 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
+
 import { Award, TrendingUp, Users, Star, MapPin, Building2, UserCheck } from 'lucide-react';
 
 const HeroHighlight: React.FC = () => {
-    const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
 
     return (
         <div className="w-full relative z-30 px-4 mt-6 mb-8 md:mt-8 md:mb-10">
@@ -16,13 +13,7 @@ const HeroHighlight: React.FC = () => {
 
                 {/* Main Badge Card */}
                 <div
-                    className={`
-            relative bg-white/95 backdrop-blur-xl
-            rounded-[2rem] p-6 md:p-8 shadow-2xl border border-gold/20 
-            overflow-hidden transform transition-all duration-1000 ease-out
-            hover:shadow-gold/20 hover:-translate-y-1
-            ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}
-          `}
+                    className="relative bg-white/95 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 shadow-2xl border border-gold/20 overflow-hidden hover:shadow-gold/20 hover:-translate-y-1 transition-shadow duration-300"
                 >
 
                     {/* Decorative Elements */}
@@ -113,13 +104,7 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({ icon: Icon, count, suffix, label, delay, iconColor, customContent }) => {
     return (
         <div
-            className={`
-        flex flex-col items-center justify-center p-4 rounded-xl
-        bg-cream/50 border border-gold/10 hover:border-gold/40 hover:bg-white
-        transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/5
-        group h-full min-h-[140px] animate-fade-in-up
-      `}
-            style={{ animationDelay: `${delay}ms` }}
+            className="flex flex-col items-center justify-center p-4 rounded-xl bg-cream/50 border border-gold/10 hover:border-gold/40 hover:bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/5 group h-full min-h-[140px]"
         >
             <div className="p-3 bg-white rounded-full shadow-md mb-3 group-hover:scale-110 transition-transform duration-300 ring-1 ring-gold/10">
                 <Icon className={`w-6 h-6 ${iconColor || 'text-gold-DEFAULT'}`} />
@@ -130,7 +115,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon: Icon, count, suffix, label, d
             ) : (
                 <>
                     <span className="text-2xl md:text-3xl font-bold text-gold-deep leading-none mb-1">
-                        <CountUp end={count || 0} suffix={suffix} duration={2000} />
+                        <CountUp end={count || 0} suffix={suffix} duration={1200} />
                     </span>
                     <span className="text-xs text-gold-deep/60 font-semibold uppercase tracking-wider text-center">
                         {label}
@@ -142,7 +127,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon: Icon, count, suffix, label, d
 };
 
 // Internal CountUp Component
-const CountUp: React.FC<{ end: number; suffix?: string; duration?: number }> = ({ end, suffix = '', duration = 2000 }) => {
+const CountUp: React.FC<{ end: number; suffix?: string; duration?: number }> = ({ end, suffix = '', duration = 1200 }) => {
     const [count, setCount] = useState(0);
     const nodeRef = useRef<HTMLSpanElement>(null);
     const [hasStarted, setHasStarted] = useState(false);

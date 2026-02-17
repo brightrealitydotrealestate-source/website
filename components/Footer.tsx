@@ -65,19 +65,54 @@ const Footer: React.FC = () => {
             <h4 className="text-base md:text-lg font-bold text-gold uppercase tracking-normal mb-4 md:mb-5">
               Connect With Us
             </h4>
-            <div className="flex space-x-4 flex-wrap gap-y-4">
-              {SOCIAL_LINKS.map((social) => {
+            <div className="flex gap-2 md:gap-4 flex-wrap">
+              {SOCIAL_LINKS.map((social, index) => {
                 const Icon = social.icon;
+                const socialConfig: { [key: string]: { color: string; text: string } } = {
+                  "Instagram": { color: "#E1306C", text: "Follow us on Instagram" },
+                  "YouTube": { color: "#FF0000", text: "Subscribe to our Channel" },
+                  "Facebook": { color: "#1877F2", text: "Follow us on Facebook" },
+                  "WhatsApp": { color: "#25D366", text: "Text us on Whatsapp" },
+                  "Email": { color: "#EA4335", text: "Email us" },
+                  "Google Reviews": { color: "#4285F4", text: "Review us on Google" }
+                };
+                const config = socialConfig[social.platform];
+                const isFirst = index === 0;
+                const isLast = index === SOCIAL_LINKS.length - 1;
                 return (
                   <a
                     key={social.platform}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full transition-all duration-300 shadow-md group bg-peach/30 text-gold-dark hover:bg-gold hover:text-white"
-                    aria-label={social.platform}
+                    className="relative p-2 md:p-3 rounded-full transition-all duration-300 shadow-md group bg-peach/30 text-gold-dark hover:text-white"
+                    style={{
+                      // @ts-ignore
+                      '--hover-color': config?.color || '#D9B104'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = config?.color || '#D9B104';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = '';
+                    }}
                   >
                     <Icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
+
+                    {/* Tooltip */}
+                    <span
+                      className={`absolute -top-10 bg-white text-gold-deep text-xs font-bold px-3 py-1.5 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-10 border border-gold/20
+                        ${isFirst ? 'left-0 translate-x-0' : isLast ? 'right-0 translate-x-0 left-auto' : 'left-1/2 -translate-x-1/2'}
+                      `}
+                    >
+                      {config?.text || social.platform}
+                      {/* Triangle pointer */}
+                      <span
+                        className={`absolute bottom-[-4px] w-2 h-2 bg-white rotate-45 border-r border-b border-gold/20
+                          ${isFirst ? 'left-4' : isLast ? 'right-4' : 'left-1/2 -translate-x-1/2'}
+                        `}
+                      ></span>
+                    </span>
                   </a>
                 );
               })}

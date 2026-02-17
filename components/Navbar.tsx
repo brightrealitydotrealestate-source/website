@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 animate-navbar-slide-down ${isScrolled
         ? 'bg-cream/95 backdrop-blur-lg shadow-xl py-2'
         : 'bg-white/90 backdrop-blur-sm py-3 md:py-4'
         }`}
@@ -41,7 +41,16 @@ const Navbar: React.FC = () => {
       <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <Link to="/" className="flex items-center group">
+          <Link
+            to="/"
+            className="flex items-center group"
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
             <img
               src="/assets/images/logo.svg"
               alt={COMPANY_INFO.name}
@@ -71,20 +80,47 @@ const Navbar: React.FC = () => {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <Link
-                to="/services"
-                className="flex items-center text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base"
-                onClick={(e) => {
-                  setServicesOpen(false);
-                }}
-              >
-                Services <ChevronDown size={16} className="ml-1" />
-              </Link>
+              <div className="flex items-center gap-1">
+                <Link
+                  to="/services"
+                  className="text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base cursor-pointer"
+                  onClick={(e) => {
+                    // Navigate only
+                    setServicesOpen(false);
+                    if (location.pathname === '/services') {
+                      const element = document.getElementById('services-section');
+                      if (element) {
+                        const headerOffset = 100;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }
+                  }}
+                >
+                  Services
+                </Link>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setServicesOpen(!servicesOpen);
+                  }}
+                  className="text-gold-deep hover:text-gold focus:outline-none p-1"
+                  aria-label="Toggle Services Menu"
+                >
+                  <ChevronDown size={16} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
 
               {/* Dropdown Menu */}
               <div
-                className={`absolute top-full left-0 mt-2 w-64 bg-white border border-gold-light/20 rounded-lg shadow-2xl transform transition-all duration-300 origin-top-left overflow-hidden ${servicesOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+                className={`absolute top-full left-0 mt-2 w-64 bg-white border border-gold-light/20 rounded-lg shadow-2xl transform transition-all duration-300 origin-top-left overflow-hidden z-50 ${servicesOpen ? 'scale-100' : 'scale-95'
                   }`}
+                style={{
+                  visibility: servicesOpen ? 'visible' : 'hidden',
+                  opacity: servicesOpen ? 1 : 0
+                }}
               >
                 <div className="py-2">
                   {SERVICES.map((service) => (
@@ -101,18 +137,33 @@ const Navbar: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </div >
 
             <Link
               to="/contact"
+              onClick={(e) => {
+                // If on contact page or home page (where contact section is), scroll to it
+                if (location.pathname === '/contact' || location.pathname === '/') {
+                  // e.preventDefault(); // Optional: depend on if you want URL to update
+                  setTimeout(() => {
+                    const element = document.getElementById('contact-section');
+                    if (element) {
+                      const headerOffset = 100;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }, 100);
+                }
+              }}
               className="px-6 md:px-7 lg:px-8 py-2 md:py-2.5 bg-gold hover:bg-gold-light text-white font-bold rounded-full shadow-lg hover:shadow-gold/50 transform hover:-translate-y-0.5 transition-all duration-300 text-sm lg:text-base tracking-normal"
             >
               CONTACT US
             </Link>
-          </div>
+          </div >
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          < div className="md:hidden flex items-center" >
             <button
               onClick={() => {
                 setMobileMenuOpen(!mobileMenuOpen);
@@ -121,12 +172,12 @@ const Navbar: React.FC = () => {
             >
               {mobileMenuOpen ? <X size={35} /> : <Menu size={35} />}
             </button>
-          </div>
-        </div>
-      </div>
+          </div >
+        </div >
+      </div >
 
       {/* Mobile Menu Overlay - Glassmorphism Bubble Effect */}
-      <div
+      < div
         className={`md:hidden absolute top-full left-0 w-full backdrop-blur-2xl border-b border-white/20 transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-screen opacity-100 py-6' : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         style={{
@@ -140,24 +191,42 @@ const Navbar: React.FC = () => {
         }}
       >
         {/* Glossy shine overlay */}
-        <div
+        < div
           className="absolute inset-0 pointer-events-none"
           style={{
             background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)'
           }}
         />
-        <div className="relative px-6 space-y-6 flex flex-col items-center">
+        < div className="relative px-6 space-y-6 flex flex-col items-center" >
           <Link
             to="/"
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
-            onClick={() => { setMobileMenuOpen(false); }}
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+              setMobileMenuOpen(false);
+            }}
           >
             Home
           </Link>
 
           <Link
             to="/aboutus"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              // Handle scroll if already on the page
+              if (location.pathname === '/aboutus') {
+                const element = document.getElementById('about-section');
+                if (element) {
+                  const headerOffset = 100;
+                  const elementPosition = element.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+              }
+            }}
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
           >
             About Us
@@ -173,21 +242,48 @@ const Navbar: React.FC = () => {
 
           {/* Services Collapsible Dropdown */}
           <div className="w-full flex flex-col items-center">
-            <button
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className="flex items-center gap-2 text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
-            >
-              Services
-              {mobileServicesOpen
-                ? <ChevronUp size={20} className="transition-transform duration-200" />
-                : <ChevronDown size={20} className="transition-transform duration-200" />
-              }
-            </button>
+            {/* Split Button for Mobile: Text navigates, Arrow toggles */}
+            <div className="flex items-center gap-3">
+              <Link
+                to="/services"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (location.pathname === '/services') {
+                    const element = document.getElementById('services-section');
+                    if (element) {
+                      const headerOffset = 100;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }
+                }}
+                className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
+              >
+                Services
+              </Link>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMobileServicesOpen(!mobileServicesOpen);
+                }}
+                className="p-2 text-gold-deep hover:text-gold transition-colors"
+                aria-label="Toggle Services Submenu"
+              >
+                {mobileServicesOpen
+                  ? <ChevronUp size={20} className="transition-transform duration-200" />
+                  : <ChevronDown size={20} className="transition-transform duration-200" />
+                }
+              </button>
+            </div>
 
             {/* Submenu Items */}
             <div
-              className={`w-full overflow-hidden transition-all duration-300 ease-in-out ${mobileServicesOpen ? 'max-h-60 opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'
+              className={`w-full overflow-hidden transition-all duration-300 ease-in-out ${mobileServicesOpen ? 'opacity-100 mt-3' : 'opacity-0 mt-0'
                 }`}
+              style={{
+                maxHeight: mobileServicesOpen ? '300px' : '0px'
+              }}
             >
               {SERVICES.map((service) => (
                 <Link
@@ -202,7 +298,7 @@ const Navbar: React.FC = () => {
                 </Link>
               ))}
             </div>
-          </div>
+          </div >
 
           <Link
             to="/contact"
@@ -211,9 +307,9 @@ const Navbar: React.FC = () => {
           >
             CONTACT US
           </Link>
-        </div>
-      </div>
-    </nav>
+        </div >
+      </div >
+    </nav >
   );
 };
 

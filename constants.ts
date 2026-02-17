@@ -41,38 +41,52 @@ const WhatsAppBrandIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export const SLIDES: Slide[] = [
   {
     id: 1,
-    name: "Slide1",
-    subtitle: "Your Subtitle Here",
-    src: "/assets/images/Golden.png",
-    alt: "Luxury Villa Exterior"
+    name: "Poonamallee",
+    subtitle: "Upcoming Residential Plots in Poonamallee",
+    src: "https://i.pinimg.com/1200x/a6/15/30/a61530b39558e18df7a896ed6ac1c574.jpg",
+    alt: "Upcoming Residential Plots in Poonamallee"
   },
   {
     id: 2,
-    name: "Slide2",
-    subtitle: "Your Subtitle Here",
-    src: "https://i.pinimg.com/1200x/fb/1b/7f/fb1b7fc8048fbda0618b0c132ca0f0ad.jpg",
-    alt: "Modern Penthouse Interior"
+    name: "Avadi",
+    subtitle: "Buy Residential Plots for Sale in Avadi, Chennai ",
+    src: "https://i.pinimg.com/736x/00/62/c8/0062c863324f2d03712fe00222511257.jpg",
+    alt: "Buy Residential Plots for Sale in Avadi, Chennai"
   },
   {
     id: 3,
-    name: "Slide3",
-    subtitle: "Your Subtitle Here",
-    src: "https://i.pinimg.com/736x/e9/0c/5e/e90c5eb1955ad9316f10098a5d920499.jpg",
-    alt: "Futuristic Architecture"
+    name: "OMR",
+    subtitle: "Upcoming World Class Mall in OMR, Chennai",
+    src: "https://i.pinimg.com/736x/5c/61/52/5c6152498c9416507fa3b99d7f50d430.jpg",
+    alt: "Upcoming World Class Mall in OMR, Chennai"
   },
   {
     id: 4,
-    name: "Slide4",
-    subtitle: "Your Subtitle Here",
-    src: "https://i.pinimg.com/736x/e9/0c/5e/e90c5eb1955ad9316f10098a5d920499.jpg",
-    alt: "Futuristic Architecture"
+    name: "Kuthambakkam",
+    subtitle: "Upcoming New Bus Terminus Kuthambakkam, Chennai",
+    src: "https://i.pinimg.com/1200x/fc/cd/8d/fccd8dc7f22219a4b3e9bdfab62a9751.jpg",
+    alt: "Upcoming New Bus Terminus Kuthambakkam, Chennai"
   },
   {
     id: 5,
-    name: "Slide5",
-    subtitle: "Your Subtitle Here",
-    src: "https://i.pinimg.com/736x/e9/0c/5e/e90c5eb1955ad9316f10098a5d920499.jpg",
-    alt: "Futuristic Architecture"
+    name: "Poonamallee",
+    subtitle: "New Metro Line Poonamallee, Vadapalani to Poonamallee in 2026",
+    src: "https://i.pinimg.com/1200x/46/14/e5/4614e504bc1e11f3e585d20033540784.jpg",
+    alt: "New Metro Line Poonamallee"
+  },
+  {
+    id: 6,
+    name: "Avadi",
+    subtitle: "New Suburban Railway Line Avadi, Tambaram - Avadi - Soon",
+    src: "https://i.pinimg.com/1200x/01/be/a1/01bea166874b6c6f8add6617ca78164e.jpg",
+    alt: "New Suburban Railway Line Avadi, Tambaram - Avadi - Soon"
+  },
+  {
+    id: 7,
+    name: "Paranthur",
+    subtitle: "New International Airport Paranthur, Chennai",
+    src: "https://i.pinimg.com/1200x/53/1f/13/531f137fa97e776062b07b974fa3fa04.jpg",
+    alt: "New International Airport Paranthur, Chennai"
   },
 ];
 
@@ -108,27 +122,45 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const COMPANY_INFO = {
   name: "Bright Reality",
-  tagline: "An Oppertunity to Enrich Yourself",
+  tagline: "An Opportunity to Enrich Yourself",
   address: "No.62/2, 2nd Floor, South Sivan Koil Street, Vadapalani, Chennai - 600 026",
   email: "brightrealityrealestate@gmail.com",
   phone: "+91 98400 55492",
-  copyrightYear: new Date().getFullYear(), // Dynamically set current year
+  copyrightYear: new Date().getFullYear(), //auto update year
   mapAddress: "No.62/2, 2nd Floor, South Sivan Koil Street, Vadapalani, Chennai - 600 026",
   googleMapLink: "https://maps.app.goo.gl/rgyNhRoqV9YPb1dx7",
   mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.498492067764!2d80.2125164!3d13.0471321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ae321b5313b9565%3A0x8d8959db90854d71!2sBright%20Reality!5e0!3m2!1sen!2sin!4v1707900000000!5m2!1sen!2sin"
 };
 
-export const ABOUT_US_IMAGE = "/assets/images/About Us Image.png";
+export const ABOUT_US_IMAGE = "/assets/images/company.png";
+export const ABOUT_US_FOUNDER_IMAGE = "/assets/images/founder.png"; // User can update this path later
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  { type: 'image', src: "https://picsum.photos/1200/800?random=10", alt: "Luxury Bedroom" },
-  { type: 'image', src: "https://picsum.photos/800/1200?random=11", alt: "Modern Kitchen" },
-  { type: 'image', src: "https://picsum.photos/1000/1000?random=12", alt: "Poolside View" },
-  { type: 'image', src: "https://picsum.photos/1200/600?random=13", alt: "Garden Landscape" },
+  { type: 'image', src: "/assets/images/brightrealitychenani.jpeg", alt: "Bright Reality Real Estate Company in Chennai" },
+  { type: 'image', src: "/assets/images/Site Visit.jpeg", alt: "Site Visit" },
+  { type: 'image', src: "/assets/images/Property Registration.jpeg", alt: "Property Registration" },
+  { type: 'image', src: "/assets/images/Ready Plots for Sale in Chennai.jpeg", alt: "Ready Plots for Sale in Chennai" },
+  { type: 'image', src: "/assets/images/Seamless Property Registration By Bright Reality Real Estate Chennai.jpeg", alt: "Seamless Property Registration By Bright Reality Real Estate Chennai" },
+  { type: 'image', src: "/assets/images/Real Estate Company Chennai.jpeg", alt: "Real Estate Company Chennai" },
+  { type: 'image', src: "/assets/images/CMDA Approved Plots in Avadi.png", alt: "CMDA Approved Plots in Avadi" },
+  { type: 'image', src: "/assets/images/Low Budget Plots Around Ponamallee.png", alt: "Low Budget Plots Around Ponamallee" },
+  { type: 'image', src: "/assets/images/Available Plots In Sriperumbhur Surrounding.png", alt: "Available Plots In Sriperumbhur Surrounding" },
+  { type: 'image', src: "/assets/images/Gated Community Villas, Plots in Maraimalai Nagar.png", alt: "Gated Community Villas, Plots in Maraimalai Nagar" },
+  { type: 'image', src: "/assets/images/Plots in Chengalpattu, Newly Launched Plots in Chengalpattu Surrounding.png", alt: "Plots in Chengalpattu, Newly Launched Plots in Chengalpattu Surrounding" },
+  { type: 'image', src: "/assets/images/New Plots, Appartments, Resale House, Villas in Guduvancheri.png", alt: "New Plots, Appartments, Resale House, Villas in Guduvancheri" },
+  { type: 'image', src: "/assets/images/Plots in Tiruvallur, Newly Launched Available Plots in Tiruvallur.png", alt: "Plots in Tiruvallur, Newly Launched Available Plots in Tiruvallur" },
+  { type: 'image', src: "/assets/images/Low Budget Villa Plots in Vepampattu.png", alt: "Low Budget Villa Plots in Vepampattu" },
+  { type: 'image', src: "/assets/images/propertiesforsaleinkodaikanal.jpeg", alt: "Properties for sale in Kodaikanal" },
+  { type: 'image', src: "https://i.pinimg.com/736x/e9/1e/ce/e91eceb210710b9dbb2c5e05d04a1574.jpg", alt: "Best Real estate Company in Chennai" },
+  { type: 'image', src: "https://i.pinimg.com/736x/fc/c8/df/fcc8dffbc79ead993ca1d8ac9aff2f14.jpg", alt: "Low Budget Plots in Chennai" },
+  { type: 'image', src: "https://i.pinimg.com/736x/5e/09/4d/5e094d155618d1bdc54a1e785dfa17a2.jpg", alt: "Villas for Sale in Chennai" },
+  { type: 'image', src: "https://i.pinimg.com/1200x/be/da/f8/bedaf87a4c587dd29b66840d4fcb5f17.jpg", alt: "Appartment for Sale in Chennai" },
+  // Using the actual video for thumbnail generation
   { type: 'video', src: "/assets/videos/BR.mp4", alt: "About Bright Reality" },
-  { type: 'image', src: "https://picsum.photos/800/800?random=14", alt: "Living Room" },
-  { type: 'image', src: "https://picsum.photos/900/1200?random=15", alt: "Bathroom" },
-  { type: 'image', src: "https://picsum.photos/1200/900?random=16", alt: "Balcony" },
+  { type: 'image', src: "/assets/images/propertiesinkodaikanal.jpeg", alt: "Properties in Kodaikanal" },
+  { type: 'image', src: "/assets/images/propertiesavailableinkodaikanal.jpeg", alt: "Properties Available in Kodaikanal" },
+  { type: 'image', src: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXeGGe4ZtkJ8eNTlY7iWsNgVS_lLegysxQOhMK04a6qnWxn3DYsRtIpf6usgMVxpphvIxwu98tzxgxUT-Hp8V6SDzPgUzlRpfh7T_TbEdXN_FVx40Uau5zGAly7lYxI7LibISq779rtDN2ZoPZi3eI0?key=qF8Y8X7g422MQiWtFYG0Rg", alt: "On road properties around over all the chennai" },
+  { type: 'image', src: "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/4d/46/af/kodaikanal.jpg", alt: "hill station properties in tamil nadu" },
 ];
 
 export const COLORS = {
