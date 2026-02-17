@@ -126,7 +126,7 @@ export const COMPANY_INFO = {
   address: "No.62/2, 2nd Floor, South Sivan Koil Street, Vadapalani, Chennai - 600 026",
   email: "brightrealityrealestate@gmail.com",
   phone: "+91 98400 55492",
-  copyrightYear: "2026",
+  copyrightYear: new Date().getFullYear(), //auto update year
   mapAddress: "No.62/2, 2nd Floor, South Sivan Koil Street, Vadapalani, Chennai - 600 026",
   googleMapLink: "https://maps.app.goo.gl/rgyNhRoqV9YPb1dx7",
   mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.498492067764!2d80.2125164!3d13.0471321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ae321b5313b9565%3A0x8d8959db90854d71!2sBright%20Reality!5e0!3m2!1sen!2sin!4v1707900000000!5m2!1sen!2sin"
