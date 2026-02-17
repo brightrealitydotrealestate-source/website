@@ -24,7 +24,7 @@ const ServiceHighlights: React.FC = () => {
     ];
 
     return (
-        <section className="py-8 bg-cream border-b border-gold/10">
+        <section className="pt-10 pb-14 md:pt-16 md:pb-20 bg-cream border-b border-gold/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Floating Glossy Badge */}
@@ -64,25 +64,6 @@ const ServiceHighlights: React.FC = () => {
                 {/* Responsive Grid View with Staggered Layout */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pb-12">
                     {services.map((service, index) => {
-                        // Staggered offset for desktop layout (Static Wave)
-                        const offsetClass = [
-                            'md:translate-y-0',
-                            'md:translate-y-12',
-                            'md:translate-y-4',
-                            'md:translate-y-16',
-                            'md:translate-y-16',
-                            'md:translate-y-2',
-                            'md:translate-y-12',
-                            'md:translate-y-6'
-                        ][index % 8];
-
-                        // Staggered delay for the continuous wave animation
-                        // Increasing delay to create a "wave" passing through
-                        const waveDelayClass = [
-                            'delay-100', 'delay-300', 'delay-500', 'delay-700',
-                            'delay-200', 'delay-400', 'delay-600', 'delay-100'
-                        ][index % 8];
-
                         // Varied icon animations
                         const iconAnimation = [
                             'animate-pulse-slow',
@@ -95,10 +76,14 @@ const ServiceHighlights: React.FC = () => {
                             'animate-wiggle'
                         ][index % 8];
 
+                        // Staggered tile animation delays for wave effect
+                        const tileAnimationDelay = `${index * 150}ms`;
+
                         return (
                             <div
                                 key={index}
-                                className={`bg-white/80 backdrop-blur-sm border border-gold/20 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-gold/20 hover:scale-105 transition-all duration-500 group flex flex-col items-center justify-center text-center gap-2 md:gap-3 cursor-default animate-float-slow ${offsetClass} ${waveDelayClass}`}
+                                className="bg-white/80 backdrop-blur-sm border border-gold/20 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-gold/20 hover:scale-105 transition-all duration-500 group flex flex-col items-center justify-center text-center gap-2 md:gap-3 cursor-default animate-float"
+                                style={{ animationDelay: tileAnimationDelay }}
                             >
                                 <div className="p-2 md:p-3 bg-gradient-to-br from-peach/20 to-gold/10 rounded-full group-hover:from-gold group-hover:to-gold-light transition-colors duration-300">
                                     <service.icon

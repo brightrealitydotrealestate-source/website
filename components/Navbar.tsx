@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 animate-navbar-slide-down ${isScrolled
         ? 'bg-cream/95 backdrop-blur-lg shadow-xl py-2'
         : 'bg-white/90 backdrop-blur-sm py-3 md:py-4'
         }`}
@@ -115,8 +115,12 @@ const Navbar: React.FC = () => {
 
               {/* Dropdown Menu */}
               <div
-                className={`absolute top-full left-0 mt-2 w-64 bg-white border border-gold-light/20 rounded-lg shadow-2xl transform transition-all duration-300 origin-top-left overflow-hidden ${servicesOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+                className={`absolute top-full left-0 mt-2 w-64 bg-white border border-gold-light/20 rounded-lg shadow-2xl transform transition-all duration-300 origin-top-left overflow-hidden z-50 ${servicesOpen ? 'scale-100' : 'scale-95'
                   }`}
+                style={{
+                  visibility: servicesOpen ? 'visible' : 'hidden',
+                  opacity: servicesOpen ? 1 : 0
+                }}
               >
                 <div className="py-2">
                   {SERVICES.map((service) => (
@@ -275,8 +279,11 @@ const Navbar: React.FC = () => {
 
             {/* Submenu Items */}
             <div
-              className={`w-full overflow-hidden transition-all duration-300 ease-in-out ${mobileServicesOpen ? 'max-h-60 opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'
+              className={`w-full overflow-hidden transition-all duration-300 ease-in-out ${mobileServicesOpen ? 'opacity-100 mt-3' : 'opacity-0 mt-0'
                 }`}
+              style={{
+                maxHeight: mobileServicesOpen ? '300px' : '0px'
+              }}
             >
               {SERVICES.map((service) => (
                 <Link

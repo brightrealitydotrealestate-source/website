@@ -11,11 +11,7 @@ const Carousel: React.FC = () => {
     SLIDES[0]
   ];
 
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   const [currentIndex, setCurrentIndex] = useState(1); // Start at index 1 (the first real slide)
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -107,8 +103,7 @@ const Carousel: React.FC = () => {
 
   return (
     <div
-      className={`relative w-full aspect-video overflow-hidden group shadow-2xl rounded-lg bg-black transform transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-        }`}
+      className="relative w-full aspect-video overflow-hidden group shadow-2xl rounded-lg bg-black"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={onTouchStart}

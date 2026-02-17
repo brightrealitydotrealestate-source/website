@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="flex flex-col min-h-screen overflow-hidden">
       <Navbar />
       {/* Key forces re-render of main, triggering the animation defined in tailwind config */}
-      <main className="flex-grow">
+      <main key={pathname} className="flex-grow page-fade-in">
         {children}
       </main>
       <Footer />
