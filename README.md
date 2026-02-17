@@ -84,6 +84,10 @@ For generic servers, you may need to configure your web server (Nginx/Apache) to
 - **Email**: brightrealityrealestate@gmail.com
 
 ---
+---
+
+Designed & Developed by [Xendral](https://xendral.in/)
+
 
 © 2026 Bright Reality. All Rights Reserved.
 
