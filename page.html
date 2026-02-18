@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Pending</title>
+
+<style>
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0b0b0b 0%, #000 80%);
+    color: #e6e6e6;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+}
+
+/* SMOKE BACKGROUND */
+
+.smoke-bg {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.03), transparent 60%);
+    animation: smokeMove 40s linear infinite;
+}
+
+@keyframes smokeMove {
+    from { transform: translate(-10%, -10%) rotate(0deg); }
+    to { transform: translate(10%, 10%) rotate(360deg); }
+}
+
+/* SCREEN FLICKER */
+
+.flicker {
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.02);
+    animation: flickerAnim 0.15s infinite;
+}
+
+@keyframes flickerAnim {
+    0% { opacity: 0.02; }
+    50% { opacity: 0.04; }
+    100% { opacity: 0.02; }
+}
+
+/* SIGNAL GLITCH OVERLAY */
+
+.glitch-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.05) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+}
+
+/* CONTAINER */
+
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 650px;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 40px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid #222;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.9);
+}
+
+/* OCCULT SYMBOL */
+
+.symbol {
+    font-size: 70px;
+    color: #ff4d4d;
+    text-shadow: 0 0 15px red;
+    transition: transform 0.1s ease;
+}
+
+
+@keyframes rotateSymbol {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: #111;
+    border-radius: 10px;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff0000, #ff4d4d);
+    animation: ritualLoad 12s infinite;
+}
+
+@keyframes ritualLoad {
+    0% { width: 5%; }
+    50% { width: 85%; }
+    100% { width: 5%; }
+}
+
+.quote {
+    margin-top: 20px;
+    font-style: italic;
+    color: #bbb;
+    min-height: 60px;
+}
+
+.glitch {
+    margin-top: 10px;
+    color: #ff4d4d;
+    font-size: 14px;
+    height: 20px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+button:hover {
+    background: #ff1a1a;
+}
+
+/* CURSOR SMOKE */
+
+.cursor-smoke {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="smoke-bg"></div>
+<div class="flicker"></div>
+
+<div class="container">
+
+    <div class="symbol">⛧</div>
+
+    <h1>Payment Pending</h1>
+
+    <p>The website waits patiently for financial completion.</p>
+
+    <div class="progress-container">
+        <div class="progress"></div>
+    </div>
+
+    <div class="glitch" id="glitchBox"></div>
+    <div class="quote" id="quoteBox"></div>
+
+    <button onclick="alert('contact support if you see this')">
+        Complete The Ritual
+    </button>
+
+</div>
+<audio id="creepyAudio" loop preload="auto">
+    <source src="creepy-ambient.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* QUOTES */
+
+const quotes = [
+    "Developer finished the work. Wallet still compiling.",
+    "Payment unlocks production mode.",
+    "The server believes in you.",
+    "Everything is ready except the transaction.",
+    "Even ghosts pay hosting fees."
+];
+
+function randomQuote() {
+    quoteBox.innerText =
+        quotes[Math.floor(Math.random()*quotes.length)];
+}
+setInterval(randomQuote, 4000);
+randomQuote();
+
+/* GLITCH TEXT */
+
+const glitches = [
+    "Payment detected...",
+    "Verifying payment...",
+    "Error: payment missing",
+    "Retrying transaction...",
+    "Connection lost to wallet",
+    "Payment status: UNKNOWN"
+];
+
+function glitchMessage() {
+    glitchBox.innerText =
+        glitches[Math.floor(Math.random()*glitches.length)];
+
+    glitchBox.style.opacity = Math.random();
+}
+setInterval(glitchMessage, 250);
+/* Auto-play fix for browsers */
+const audio = document.getElementById("creepyAudio");
+
+/* Try playing after page load */
+window.addEventListener("load", () => {
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch(() => {
+            enableSoundOnInteraction();
+        });
+    }
+});
+
+/* If autoplay blocked, play on first interaction */
+function enableSoundOnInteraction() {
+    const startAudio = () => {
+        audio.play();
+        document.removeEventListener("click", startAudio);
+        document.removeEventListener("mousemove", startAudio);
+        document.removeEventListener("keydown", startAudio);
+    };
+
+    document.addEventListener("click", startAudio);
+    document.addEventListener("mousemove", startAudio);
+    document.addEventListener("keydown", startAudio);
+}
+
+
+
+
+/* CURSOR SMOKE TRAIL */
+
+document.addEventListener("mousemove", e => {
+    const smoke = document.createElement("div");
+    smoke.className = "cursor-smoke";
+    smoke.style.left = e.clientX + "px";
+    smoke.style.top = e.clientY + "px";
+    document.body.appendChild(smoke);
+
+    setTimeout(() => smoke.remove(), 1000);
+},
+function triggerGlitch() {
+    const overlay = document.getElementById("glitchOverlay");
+    overlay.style.opacity = "1";
+
+    document.body.style.transform =
+        `translate(${Math.random()*6-3}px, ${Math.random()*6-3}px)`;
+
+    setTimeout(() => {
+        overlay.style.opacity = "0";
+        document.body.style.transform = "translate(0,0)";
+    }, 120);
+});
+
+setInterval(triggerGlitch, 6000 + Math.random()*5000);
+
+
+/* SYMBOL REACTS TO MOUSE */
+
+const symbol = document.getElementById("symbol");
+
+document.addEventListener("mousemove", e => {
+    let x = (window.innerWidth / 2 - e.clientX) / 40;
+    let y = (window.innerHeight / 2 - e.clientY) / 40;
+
+    symbol.style.transform =
+        `rotateX(${y}deg) rotateY(${x}deg)`;
+});
+
+</script>
+
+</body>
+</html>
