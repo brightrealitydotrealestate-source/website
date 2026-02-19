@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -7,19 +7,20 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+const HOME_PATHS = new Set(['/', '/aboutus', '/services', '/contact', '/property-sales', '/documentation', '/registration']);
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
 
-  // useEffect(() => {
-  //   // Instantly scroll to top when the route path changes
-  //   // window.scrollTo(0, 0); 
-  // }, [pathname]);
+  // Group all Home-layout routes under a single key so navigating between
+  // sections within the home page does NOT remount <main> or replay the
+  // fade-in animation. Only truly different pages get a new key.
+  const pageKey = HOME_PATHS.has(pathname) ? 'home' : pathname;
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       <Navbar />
-      {/* Key forces re-render of main, triggering the animation defined in tailwind config */}
-      <main key={pathname} className="flex-grow page-fade-in">
+      <main key={pageKey} className="flex-grow page-fade-in">
         {children}
       </main>
       <Footer />

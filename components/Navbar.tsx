@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { SERVICES, COMPANY_INFO } from '../constants';
+
+const HOME_PATHS = new Set(['/', '/aboutus', '/services', '/contact', '/property-sales', '/documentation', '/registration']);
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,12 +14,24 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+  const isOnHomePage = HOME_PATHS.has(location.pathname);
+
+  // Scroll to a section by ID, with offset for the fixed navbar
+  const scrollToSection = useCallback((sectionId: string, delay = 0) => {
+    const doScroll = () => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (delay > 0) {
+      setTimeout(doScroll, delay);
+    } else {
+      doScroll();
+    }
   }, []);
 
   useEffect(() => {
@@ -45,7 +59,7 @@ const Navbar: React.FC = () => {
             to="/"
             className="flex items-center group"
             onClick={(e) => {
-              if (location.pathname === '/') {
+              if (isOnHomePage) {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
@@ -63,6 +77,13 @@ const Navbar: React.FC = () => {
             <Link
               to="/aboutus"
               className="text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base"
+              onClick={(e) => {
+                if (isOnHomePage) {
+                  e.preventDefault();
+                  navigate('/aboutus');
+                  scrollToSection('about-section', 50);
+                }
+              }}
             >
               About Us
             </Link>
@@ -85,16 +106,11 @@ const Navbar: React.FC = () => {
                   to="/services"
                   className="text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base cursor-pointer"
                   onClick={(e) => {
-                    // Navigate only
                     setServicesOpen(false);
-                    if (location.pathname === '/services') {
-                      const element = document.getElementById('services-section');
-                      if (element) {
-                        const headerOffset = 100;
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                      }
+                    if (isOnHomePage) {
+                      e.preventDefault();
+                      navigate('/services');
+                      scrollToSection('services-section', 50);
                     }
                   }}
                 >
@@ -142,18 +158,10 @@ const Navbar: React.FC = () => {
             <Link
               to="/contact"
               onClick={(e) => {
-                // If on contact page or home page (where contact section is), scroll to it
-                if (location.pathname === '/contact' || location.pathname === '/') {
-                  // e.preventDefault(); // Optional: depend on if you want URL to update
-                  setTimeout(() => {
-                    const element = document.getElementById('contact-section');
-                    if (element) {
-                      const headerOffset = 100;
-                      const elementPosition = element.getBoundingClientRect().top;
-                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                  }, 100);
+                if (isOnHomePage) {
+                  e.preventDefault();
+                  navigate('/contact');
+                  scrollToSection('contact-section', 50);
                 }
               }}
               className="px-6 md:px-7 lg:px-8 py-2 md:py-2.5 bg-gold hover:bg-gold-light text-white font-bold rounded-full shadow-lg hover:shadow-gold/50 transform hover:-translate-y-0.5 transition-all duration-300 text-sm lg:text-base tracking-normal"
@@ -202,11 +210,12 @@ const Navbar: React.FC = () => {
             to="/"
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
             onClick={(e) => {
-              if (location.pathname === '/') {
+              setMobileMenuOpen(false);
+              if (isOnHomePage) {
                 e.preventDefault();
+                navigate('/');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
-              setMobileMenuOpen(false);
             }}
           >
             Home
@@ -216,15 +225,10 @@ const Navbar: React.FC = () => {
             to="/aboutus"
             onClick={(e) => {
               setMobileMenuOpen(false);
-              // Handle scroll if already on the page
-              if (location.pathname === '/aboutus') {
-                const element = document.getElementById('about-section');
-                if (element) {
-                  const headerOffset = 100;
-                  const elementPosition = element.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
+              if (isOnHomePage) {
+                e.preventDefault();
+                navigate('/aboutus');
+                scrollToSection('about-section', 50);
               }
             }}
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
@@ -246,16 +250,12 @@ const Navbar: React.FC = () => {
             <div className="flex items-center gap-3">
               <Link
                 to="/services"
-                onClick={() => {
+                onClick={(e) => {
                   setMobileMenuOpen(false);
-                  if (location.pathname === '/services') {
-                    const element = document.getElementById('services-section');
-                    if (element) {
-                      const headerOffset = 100;
-                      const elementPosition = element.getBoundingClientRect().top;
-                      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
+                  if (isOnHomePage) {
+                    e.preventDefault();
+                    navigate('/services');
+                    scrollToSection('services-section', 50);
                   }
                 }}
                 className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
@@ -302,7 +302,14 @@ const Navbar: React.FC = () => {
 
           <Link
             to="/contact"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              if (isOnHomePage) {
+                e.preventDefault();
+                navigate('/contact');
+                scrollToSection('contact-section', 50);
+              }
+            }}
             className="w-full max-w-xs px-6 py-3 bg-gold hover:bg-gold-light text-white font-bold rounded-full shadow-lg hover:shadow-gold/40 transition-all text-center"
           >
             CONTACT US
