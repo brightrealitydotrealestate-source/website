@@ -3,14 +3,16 @@ import { Star } from 'lucide-react';
 
 const CustomerReviewsScroller: React.FC = () => {
     const reviews = [
-        "Arun - Very Good Guiding & Easier Documentation",
-        "Priya Saran. - Excellent Service, Hassle-Free Registration",
-        "Karthik R. - Trustworthy & Professional Team",
-        "Lakshmi V. - Best Real Estate Experience in Chennai",
-        "Suresh M. - Quick & Transparent Property Deals",
-        "Divya K. - Highly Recommended for First-Time Buyers",
-        "Rajesh P. - Exceptional Support Throughout the Process",
-        "Meena G. - Very Reliable & Auspicious Company",
+        "Deva - Very Good Guiding & Easier Documentation",
+        "Iyyanar - Excellent Service, Hassle-Free Registration",
+        "Rajkumar - Trustworthy & Professional Team, Recently Bought a New Villa With Help of Bright Reality",
+        "Samundeswari - Best Real Estate Experts in Chennai",
+        "Shankar - Quick & Transparent Property Deals",
+        "Arun Balaji - Highly Recommended for First-Time Buyers",
+        "Subbama - Exceptional Support Throughout the Process",
+        "Johnson - I Bought a New Villa Through Bright Reality, Very Reliable & Auspicious Company",
+        "Chithra - Very Good Service, Help Me Through out Registration Process",
+        "LK Sakila - I Really Happy, Bought My New Plot In Minimal Budget",
     ];
 
     return (

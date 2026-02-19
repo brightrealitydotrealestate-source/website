@@ -114,7 +114,7 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: "Instagram", url: "https://www.instagram.com/kushibusy/", icon: Instagram },
   { platform: "YouTube", url: "https://www.youtube.com/@KUSHIBUSY", icon: Youtube },
-  { platform: "Facebook", url: "https://facebook.com", icon: Facebook },
+  { platform: "Facebook", url: "https://www.facebook.com/people/KushiBusy-Channel/pfbid0VvRTuxSp9ZigtQGDTEzF3WNf7UKTYGieUFtfhe2qxrSeNgVxHudtg8HjwHv3R5T7l/", icon: Facebook },
   { platform: "WhatsApp", url: "https://wa.me/+919840013421", icon: WhatsAppBrandIcon },
   { platform: "Email", url: "mailto:brightrealityrealestate@gmail.com", icon: Mail },
   { platform: "Google Reviews", url: "https://g.page/r/CXFNhZDbWYmNEAI/review", icon: GoogleIcon }, // Placeholder URL

@@ -139,6 +139,18 @@ const AboutUsSection: React.FC = () => {
                             <p className="mb-5 md:mb-6">
                                 You may approach him for a wide range of properties, including villas, apartments, independent houses, and land ranging from small investment plots to luxury housing sites. With extensive experience and unwavering dedication, he is a prominent figure in the real estate sector, having facilitated approximately one lakh plots registrations and earned the trust of thousands of satisfied customers.
                             </p>
+                            <p className="mb-5 md:mb-6">
+                                The Kushi Busy YouTube channel, operating in strategic partnership with Bright Reality, serves as a premier real estate platform specializing in the diverse property landscape of Chennai and its surrounding Northern and Southern suburbs. We offer an extensive portfolio that caters to every demographic, ranging from affordable entry-level plots to high-end luxury villas, apartments, and independent houses.
+                            </p>
+                            <p className="mb-5 md:mb-6">
+                                By prioritizing high-definition production and crystal-clear visual storytelling, we provide our rapidly growing audience with a transparent view of the market. Our content is specifically curated to highlight high-growth locations, ensuring that our viewers can easily identify and invest in properties with the strongest future appreciation potential.
+                            </p>
+                            <p className="mb-5 md:mb-6">
+                                Under the expert leadership of Mr. Nazeer Ahamed. S, Director of Bright Reality, our mission is to simplify the complex process of buying and selling real estate. We act as a professional bridge between sellers and seekers, providing a powerful advertising platform for property owners while offering a seamless, guided experience for aspiring homeowners.
+                            </p>
+                            <p className="mb-5 md:mb-6">
+                                By focusing on quality, clarity, and future development trends, Kushi Busy empowers individuals to make informed investment decisions. We invite you to join the Kushi Busy community and leverage our expertise to secure your ideal property and ensure long-term growth.
+                            </p>
                         </>
                     )}
                 </div>

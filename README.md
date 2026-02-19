@@ -91,3 +91,11 @@ Designed & Developed by [Xendral](https://xendral.in/)
 
 © 2026 Bright Reality. All Rights Reserved.
 
+DESIGNED AND DEVELOPED BY
+Xendral 
+
+Website --      xendral.in
+Address --      Anna Nagar,
+                Chennai, India.
+Phone   --      +91 9940 261107
+Email   --      xendral.in@gmail.com
