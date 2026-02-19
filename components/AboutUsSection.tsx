@@ -146,7 +146,7 @@ const AboutUsSection: React.FC = () => {
                                 By prioritizing high-definition production and crystal-clear visual storytelling, we provide our rapidly growing audience with a transparent view of the market. Our content is specifically curated to highlight high-growth locations, ensuring that our viewers can easily identify and invest in properties with the strongest future appreciation potential.
                             </p>
                             <p className="mb-5 md:mb-6">
-                                Under the expert leadership of Mr. Nazeer Ahmed, Director of Bright Reality, our mission is to simplify the complex process of buying and selling real estate. We act as a professional bridge between sellers and seekers, providing a powerful advertising platform for property owners while offering a seamless, guided experience for aspiring homeowners.
+                                Under the expert leadership of Mr. Nazeer Ahamed. S, Director of Bright Reality, our mission is to simplify the complex process of buying and selling real estate. We act as a professional bridge between sellers and seekers, providing a powerful advertising platform for property owners while offering a seamless, guided experience for aspiring homeowners.
                             </p>
                             <p className="mb-5 md:mb-6">
                                 By focusing on quality, clarity, and future development trends, Kushi Busy empowers individuals to make informed investment decisions. We invite you to join the Kushi Busy community and leverage our expertise to secure your ideal property and ensure long-term growth.

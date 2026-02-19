@@ -83,7 +83,13 @@ function addToGoogleSheet(timestamp, name, email, mobile, whatsapp, message) {
     }
 
     // Append the new lead
-    sheet.appendRow([timestamp, name, email, mobile, whatsapp, message]);
+    // Use setValues with plain text format to prevent Google Sheets from
+    // interpreting values starting with + (phone numbers) or containing @ (emails) as formulas
+    const newRow = sheet.getLastRow() + 1;
+    const rowData = [[timestamp, name, email, mobile, whatsapp, message]];
+    const range = sheet.getRange(newRow, 1, 1, 6);
+    range.setNumberFormat('@'); // Set format to plain text BEFORE inserting data
+    range.setValues(rowData);
 }
 
 function sendOwnerNotification(name, email, mobile, whatsapp, message, time) {
