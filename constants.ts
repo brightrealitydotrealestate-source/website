@@ -144,7 +144,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { type: 'image', src: "/assets/images/Real Estate Company Chennai.jpeg", alt: "Real Estate Company Chennai" },
   { type: 'image', src: "/assets/images/CMDA Approved Plots in Avadi.png", alt: "CMDA Approved Plots in Avadi" },
   { type: 'image', src: "/assets/images/Low Budget Plots Around Ponamallee.png", alt: "Low Budget Plots Around Ponamallee" },
-  { type: 'image', src: "/assets/images/Available Plots In Sriperumbhur Surrounding.png", alt: "Available Plots In Sriperumbhur Surrounding" },
+  { type: 'image', src: "/assets/images/Available Plots In Sriperumbhur Surrounding.png", alt: "Available Plots In Sriperumbudhur Surrounding" },
   { type: 'image', src: "/assets/images/Gated Community Villas, Plots in Maraimalai Nagar.png", alt: "Gated Community Villas, Plots in Maraimalai Nagar" },
   { type: 'image', src: "/assets/images/Plots in Chengalpattu, Newly Launched Plots in Chengalpattu Surrounding.png", alt: "Plots in Chengalpattu, Newly Launched Plots in Chengalpattu Surrounding" },
   { type: 'image', src: "/assets/images/New Plots, Appartments, Resale House, Villas in Guduvancheri.png", alt: "New Plots, Appartments, Resale House, Villas in Guduvancheri" },
