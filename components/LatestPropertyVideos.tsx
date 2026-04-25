@@ -17,24 +17,25 @@ interface Video {
     id: string;
     title: string;
     url: string;
+    thumbnail?: string;
 }
 
 // ─── Graceful Fallback ────────────────────────────────────────────────────────
 // If the API ever fails, times out, or quota is exceeded, the section will gracefully
 // fall back to these verified videos instead of completely hiding.
 const FALLBACK_VIDEOS: Video[] = [
-    { id: 'Cfhga2inTQc', title: 'Propshell\'s Mega "SHA BOO THREE" Offer!', url: 'https://youtube.com/watch?v=Cfhga2inTQc' },
-    { id: 'Q5aJ3DTrTcw', title: 'Own a Premium Plot for Just ₹16 Lakhs!', url: 'https://youtube.com/watch?v=Q5aJ3DTrTcw' },
-    { id: 'egObyVGH6CY', title: 'பெருங்களத்தூரில் மிகக் குறைந்த விலையில்', url: 'https://youtube.com/shorts/egObyVGH6CY' },
-    { id: 'YqfD-01T2vY', title: 'DTCP Approved Plots for Sale in Padappai', url: 'https://youtube.com/watch?v=YqfD-01T2vY' },
-    { id: 'UoO5BqUfIuk', title: 'தாம்பரம் GST-க்கு மிக அருகில்! Budget friendly', url: 'https://youtube.com/watch?v=UoO5BqUfIuk' },
-    { id: 'yY7cE6lZcM0', title: '🔥 செங்கல்பட்டில் 5 லட்சத்தில் மனை', url: 'https://youtube.com/watch?v=yY7cE6lZcM0' },
-    { id: 'o2v_gGXFoEg', title: 'Premium Plots & Independent Houses in Avadi', url: 'https://youtube.com/watch?v=o2v_gGXFoEg' }
+    { id: 'Cfhga2inTQc', title: 'Propshell\'s Mega "SHA BOO THREE" Offer!', url: 'https://youtube.com/watch?v=Cfhga2inTQc', thumbnail: 'https://i.ytimg.com/vi/Cfhga2inTQc/0.jpg' },
+    { id: 'Q5aJ3DTrTcw', title: 'Own a Premium Plot for Just ₹16 Lakhs!', url: 'https://youtube.com/watch?v=Q5aJ3DTrTcw', thumbnail: 'https://i.ytimg.com/vi/Q5aJ3DTrTcw/0.jpg' },
+    { id: 'egObyVGH6CY', title: 'பெருங்களத்தூரில் மிகக் குறைந்த விலையில்', url: 'https://youtube.com/shorts/egObyVGH6CY', thumbnail: 'https://i.ytimg.com/vi/egObyVGH6CY/0.jpg' },
+    { id: 'YqfD-01T2vY', title: 'DTCP Approved Plots for Sale in Padappai', url: 'https://youtube.com/watch?v=YqfD-01T2vY', thumbnail: 'https://i.ytimg.com/vi/YqfD-01T2vY/0.jpg' },
+    { id: 'UoO5BqUfIuk', title: 'தாம்பரம் GST-க்கு மிக அருகில்! Budget friendly', url: 'https://youtube.com/watch?v=UoO5BqUfIuk', thumbnail: 'https://i.ytimg.com/vi/UoO5BqUfIuk/0.jpg' },
+    { id: 'yY7cE6lZcM0', title: '🔥 செங்கல்பட்டில் 5 லட்சத்தில் மனை', url: 'https://youtube.com/watch?v=yY7cE6lZcM0', thumbnail: 'https://i.ytimg.com/vi/yY7cE6lZcM0/0.jpg' },
+    { id: 'o2v_gGXFoEg', title: 'Premium Plots & Independent Houses in Avadi', url: 'https://youtube.com/watch?v=o2v_gGXFoEg', thumbnail: 'https://i.ytimg.com/vi/o2v_gGXFoEg/0.jpg' }
 ];
 
 // ─── Single Video Card ────────────────────────────────────────────────────────
-const VideoCard: React.FC<Video> = ({ id, title, url }) => {
-    const thumb = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const VideoCard: React.FC<Video> = ({ id, title, url, thumbnail }) => {
+    const thumbUrl = thumbnail || `https://i.ytimg.com/vi/${id}/0.jpg`;
 
     return (
         <a
@@ -46,7 +47,7 @@ const VideoCard: React.FC<Video> = ({ id, title, url }) => {
         >
             <div className="relative aspect-video rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300 border border-gold/10 bg-black">
                 <img
-                    src={thumb}
+                    src={thumbUrl}
                     alt={title}
                     loading="lazy"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
@@ -104,10 +105,15 @@ const LatestPropertyVideos: React.FC = () => {
 
                 const parsed: Video[] = data.items.map((item: any) => {
                     const videoId = item.snippet.resourceId.videoId;
+                    // Grab exact thumbnail from API, fallback to medium/default if high missing
+                    const thumbObj = item.snippet.thumbnails;
+                    const fetchedThumb = thumbObj?.high?.url || thumbObj?.medium?.url || thumbObj?.default?.url;
+
                     return {
                         id: videoId,
                         title: item.snippet.title,
-                        url: `https://youtube.com/watch?v=${videoId}`
+                        url: `https://youtube.com/watch?v=${videoId}`,
+                        thumbnail: fetchedThumb
                     };
                 });
 
@@ -161,7 +167,7 @@ const LatestPropertyVideos: React.FC = () => {
                 <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 lg:grid-cols-5 md:overflow-visible md:pb-0 snap-x snap-mandatory hide-scrollbars">
                     {loading
                         ? Array.from({ length: 5 }).map((_, i) => <Skeleton key={i} />)
-                        : videos.map(v => <VideoCard key={v.id} id={v.id} title={v.title} url={v.url} />)
+                        : videos.map(v => <VideoCard key={v.id} id={v.id} title={v.title} url={v.url} thumbnail={v.thumbnail} />)
                     }
                 </div>
 
