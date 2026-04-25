@@ -29,19 +29,20 @@ function doPost(e) {
         const submittedEmail = data.email || "No Email Provided";
         const submittedMobile = data.mobile || "No Mobile Provided";
         const submittedWhatsapp = data.whatsapp || "N/A";
+        const submittedInterestedArea = data.interestedArea || "N/A";
         const submittedMessage = data.message || "No Message";
         const timestamp = new Date().toLocaleString();
 
         // 1. Store in Google Sheet (Auto-create if missing)
         try {
-            addToGoogleSheet(timestamp, submittedName, submittedEmail, submittedMobile, submittedWhatsapp, submittedMessage);
+            addToGoogleSheet(timestamp, submittedName, submittedEmail, submittedMobile, submittedWhatsapp, submittedInterestedArea, submittedMessage);
         } catch (sheetError) {
             console.error("Sheet Error: " + sheetError.toString());
             // Continue execution so email still sends
         }
 
         // 2. Send "New Lead" Email to Owner & Apply Label
-        sendOwnerNotification(submittedName, submittedEmail, submittedMobile, submittedWhatsapp, submittedMessage, timestamp);
+        sendOwnerNotification(submittedName, submittedEmail, submittedMobile, submittedWhatsapp, submittedInterestedArea, submittedMessage, timestamp);
 
         // 3. Send "Thank You" Auto-Reply to User
         if (submittedEmail && submittedEmail.includes("@")) {
@@ -61,7 +62,7 @@ function doPost(e) {
     }
 }
 
-function addToGoogleSheet(timestamp, name, email, mobile, whatsapp, message) {
+function addToGoogleSheet(timestamp, name, email, mobile, whatsapp, interestedArea, message) {
     let sheet;
     const files = DriveApp.getFilesByName(SHEET_NAME);
 
@@ -75,24 +76,24 @@ function addToGoogleSheet(timestamp, name, email, mobile, whatsapp, message) {
         const spreadsheet = SpreadsheetApp.create(SHEET_NAME);
         sheet = spreadsheet.getActiveSheet();
         // Add Headers
-        sheet.appendRow(["Timestamp", "Name", "Email", "Mobile", "WhatsApp", "Message"]);
+        sheet.appendRow(["Timestamp", "Name", "Email", "Mobile", "WhatsApp", "Interested Area", "Message"]);
         // Freeze header row
         sheet.setFrozenRows(1);
         // Bold header
-        sheet.getRange(1, 1, 1, 6).setFontWeight("bold");
+        sheet.getRange(1, 1, 1, 7).setFontWeight("bold");
     }
 
     // Append the new lead
     // Use setValues with plain text format to prevent Google Sheets from
     // interpreting values starting with + (phone numbers) or containing @ (emails) as formulas
     const newRow = sheet.getLastRow() + 1;
-    const rowData = [[timestamp, name, email, mobile, whatsapp, message]];
-    const range = sheet.getRange(newRow, 1, 1, 6);
+    const rowData = [[timestamp, name, email, mobile, whatsapp, interestedArea, message]];
+    const range = sheet.getRange(newRow, 1, 1, 7);
     range.setNumberFormat('@'); // Set format to plain text BEFORE inserting data
     range.setValues(rowData);
 }
 
-function sendOwnerNotification(name, email, mobile, whatsapp, message, time) {
+function sendOwnerNotification(name, email, mobile, whatsapp, interestedArea, message, time) {
     const subject = `New Lead: ${name} - ${COMPANY_NAME} Website`;
     const body = `
     You have received a new inquiry from the website.
@@ -103,6 +104,7 @@ function sendOwnerNotification(name, email, mobile, whatsapp, message, time) {
     Mobile:   ${mobile}
     WhatsApp: ${whatsapp}
     Email:    ${email}
+    Area:     ${interestedArea}
     Time:     ${time}
     
     MESSAGE:

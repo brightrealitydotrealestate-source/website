@@ -48,7 +48,7 @@ const ServiceHighlights: React.FC = () => {
                             <Star size={10} className="text-gold fill-gold absolute bottom-2 -left-1 animate-float delay-500" />
                         </div>
 
-                        <span className="text-center mx-4 max-w-[280px] md:max-w-full leading-tight">Why We Are The Best Real Estate Company Around Over All Tamil Nadu</span>
+                        <span className="text-center mx-4 max-w-[280px] md:max-w-full leading-tight">Why People Choose Us</span>
 
                         {/* Scattered Stars - Right */}
                         <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-full">

@@ -174,6 +174,6 @@ export const COLORS = {
 
 // Contact Information
 export const CONTACT_INFO = {
-  phone: '+91 98400 55492 ', 
+  phone: '+91 98400 55492 ',
   whatsapp: '+919840013421',
 };

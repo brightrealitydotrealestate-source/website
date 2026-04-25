@@ -327,9 +327,18 @@ const Gallery: React.FC = () => {
   return (
     <div className="pt-24 md:pt-32 pb-8 md:pb-12 min-h-screen bg-cream">
       <SEO
-        title="Gallery - Our Projects"
-        description="View our gallery of luxury villas, plots, and real estate projects in Chennai and Avadi."
+        title="Property Gallery – Real Estate Projects in Chennai | Bright Reality"
+        description="Browse Bright Reality's photo & video gallery of DTCP & CMDA approved plots, luxury villas, gated communities, and independent houses across Chennai – Avadi, Tambaram, Poonamallee, Vadapalani and more."
+        keywords="property photos chennai, plot layout images chennai, gated community photos, villa photos chennai, apartment gallery chennai, bright reality properties, DTCP plot images, new house photos chennai, real estate gallery vadapalani, independent house photos chennai"
         canonical="https://www.kushibusy.in/gallery"
+        schema={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Bright Reality Property Gallery",
+          "description": "Photo and video gallery of DTCP & CMDA approved plots, villas, independent houses, and apartments in Chennai.",
+          "url": "https://www.kushibusy.in/gallery",
+          "author": { "@type": "Organization", "name": "Bright Reality", "url": "https://www.kushibusy.in" }
+        })}
       />
       <div className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-12 relative">

@@ -8,6 +8,7 @@ import HeroHighlight from '../components/HeroHighlight';
 import FAQSection from '../components/FAQSection';
 import { Send, Map as MapIcon, MapPin } from 'lucide-react';
 import { COMPANY_INFO, SERVICES } from '../constants';
+import LatestPropertyVideos from '../components/LatestPropertyVideos';
 import AboutUsSection from '../components/AboutUsSection';
 import ContactSection from '../components/ContactSection';
 import SEO from '../components/SEO';
@@ -49,7 +50,7 @@ const Home: React.FC = () => {
       "Pallavaram"
     ],
     "sameAs": [
-      "https://www.instagram.com/kushibusy/",
+      "https://www.instagram.com/kushibusy.in/",
       "https://www.youtube.com/@KUSHIBUSY",
       "https://facebook.com"
     ]
@@ -61,7 +62,6 @@ const Home: React.FC = () => {
 
     // Define mapping from path to section ID
     const pathToSection: { [key: string]: string } = {
-      '/aboutus': 'about-section',
       '/contact': 'contact-section',
       '/services': 'services-section',
       '/property-sales': 'service-1', // Mapping specific service slugs to their card IDs
@@ -125,8 +125,9 @@ const Home: React.FC = () => {
   return (
     <div className="w-full bg-cream pt-[80px] md:pt-[105px]">
       <SEO
-        title="Bright Reality | Available Plots in Avadi, Chennai"
-        description="Looking for plots in Avadi or Chennai? Bright Reality offers premium land plots, villas, and registration services. Contact us today!"
+        title="Best Real Estate Agents in Chennai | DTCP Plots, Villas, Houses – Bright Reality"
+        description="Bright Reality – Chennai's most trusted real estate consultancy. Buy DTCP & CMDA approved plots, luxury villas, independent houses & flats in Chennai, Avadi, Tambaram, Poonamallee & across Chennai. 100,000+ registrations. Call +91 98400 55492."
+        keywords="kushibusy, kushi busy, bright reality, brightreality, real estate agents in chennai, best real estate company in chennai, DTCP approved plots in chennai, CMDA approved plots, buy plots in chennai, buy land in chennai, buy independent house in chennai, 2BHK flats in chennai, villas for sale in chennai, plots in avadi, plots in tambaram, plots in poonamallee, plots in guduvanchery, resale house chennai, property registration chennai, plot registration chennai, property consultants chennai, kushi busy youtube channel, bright reality vadapalani, new house for sale in chennai"
         canonical={`https://www.kushibusy.in${location.pathname === '/' ? '' : location.pathname}`}
         schema={localBusinessSchema}
       />
@@ -159,8 +160,11 @@ const Home: React.FC = () => {
       {/* Available Plots Scroller */}
       <AvailablePlotsScroller />
 
-      {/* About Us Section */}
-      <AboutUsSection />
+      {/* Latest YouTube Videos */}
+      <LatestPropertyVideos />
+
+      {/* About Us Preview Section */}
+      <AboutUsSection isHomePage={true} />
 
       {/* Service Highlights Section */}
       <ServiceHighlights />
@@ -266,6 +270,9 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <FAQSection />
+
       {/* Verified Reviews Badge - Floating Glossy Circle */}
       <div className="flex justify-center pt-4 pb-2 md:pt-5 md:pb-2.5 bg-cream">
         <div
@@ -288,7 +295,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Customer Reviews Scroller */}
+      {/* Customer Reviews Ticker Scroller */}
       <CustomerReviewsScroller />
 
       {/* Contact Section */}

@@ -1,43 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Home Page -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+          http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Home Page — Highest Priority -->
   <url>
     <loc>https://www.kushibusy.in/</loc>
-    <priority>1.0</priority>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 
-  <!-- Service Routes (Mapped to Homepage Sections) -->
+  <!-- About Us Page -->
   <url>
-    <loc>https://www.kushibusy.in/property-sales</loc>
-    <priority>0.8</priority>
+    <loc>https://www.kushibusy.in/aboutus</loc>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.kushibusy.in/documentation</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.kushibusy.in/registration</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
-  <!-- Main Pages -->
+  <!-- Gallery Page -->
   <url>
     <loc>https://www.kushibusy.in/gallery</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
+
+  <!-- Service: Property Sales -->
+  <url>
+    <loc>https://www.kushibusy.in/property-sales</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Service: Documentation -->
+  <url>
+    <loc>https://www.kushibusy.in/documentation</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Service: Registration -->
+  <url>
+    <loc>https://www.kushibusy.in/registration</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact / Book Site Visit (Homepage section) -->
+  <url>
+    <loc>https://www.kushibusy.in/#contact-section</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Privacy Policy -->
   <url>
     <loc>https://www.kushibusy.in/privacy</loc>
-    <priority>0.3</priority>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
+
+  <!-- Terms of Service -->
   <url>
     <loc>https://www.kushibusy.in/terms</loc>
-    <priority>0.3</priority>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
+
 </urlset>

@@ -20,6 +20,7 @@ const ContactSection: React.FC = () => {
         whatsapp: '',
         mobile: '',
         email: '',
+        interestedArea: '',
         message: ''
     });
 
@@ -85,9 +86,10 @@ const ContactSection: React.FC = () => {
             "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
 
         try {
-            if (!formState.email || !formState.email.includes('@')) {
-                setEmailError("Please enter a valid email address.");
-                throw new Error("Please enter a valid email address.");
+            // Email is now optional! Reduce friction!
+            if (formState.email && !formState.email.includes('@')) {
+                setEmailError("If provided, please enter a valid email address.");
+                throw new Error("Invalid email address.");
             } else {
                 setEmailError("");
             }
@@ -127,7 +129,7 @@ const ContactSection: React.FC = () => {
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 setToastMessage("Thanks For Showing Interest, Will Call You Shortly");
                 setToastType('success');
-                setFormState({ name: '', whatsapp: '', mobile: '', email: '', message: '' });
+                setFormState({ name: '', whatsapp: '', mobile: '', email: '', interestedArea: '', message: '' });
                 setIsSubmitting(false);
                 return;
             }
@@ -152,7 +154,7 @@ const ContactSection: React.FC = () => {
             if (result.status === 'success') {
                 setToastMessage("Thanks For Showing Interest, Will Call You Shortly");
                 setToastType('success');
-                setFormState({ name: '', whatsapp: '', mobile: '', email: '', message: '' });
+                setFormState({ name: '', whatsapp: '', mobile: '', email: '', interestedArea: '', message: '' });
             } else {
                 throw new Error(result.message || "Something went wrong on the server.");
             }
@@ -276,10 +278,25 @@ const ContactSection: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* Email */}
+                            {/* Interested Area Input */}
                             <div className="group">
                                 <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
-                                    Email Address
+                                    Interested Area
+                                </label>
+                                <input
+                                    type="text"
+                                    name="interestedArea"
+                                    value={formState.interestedArea}
+                                    onChange={handleInputChange}
+                                    className="block w-full px-4 py-3 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
+                                    placeholder="Enter your interested area (e.g. Padappai, Avadi)"
+                                />
+                            </div>
+
+                            {/* Email (Optional) */}
+                            <div className="group">
+                                <label className="block text-sm font-bold text-gold-dark mb-2 uppercase tracking-normal">
+                                    Email Address <span className="text-xs text-gold-dust lowercase font-normal">(Optional)</span>
                                 </label>
                                 <input
                                     type="email"
@@ -287,8 +304,7 @@ const ContactSection: React.FC = () => {
                                     value={formState.email}
                                     onChange={handleInputChange}
                                     className="block w-full px-4 py-3 text-gold-deep bg-peach/10 border border-gold-light/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
-                                    placeholder="Enter your valid email address"
-                                    required
+                                    placeholder="Enter your email address"
                                 />
                                 {emailError && <p className="text-red-500 text-xs mt-1 ml-1">{emailError}</p>}
                             </div>

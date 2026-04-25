@@ -29,14 +29,14 @@ const HeroHighlight: React.FC = () => {
                         <div className="flex-shrink-0 text-center lg:text-left lg:max-w-md">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-4">
                                 <Star className="w-3.5 h-3.5 text-gold-dark animate-spin-slow" />
-                                <span className="text-xs font-bold text-gold-dark tracking-[0.2em] uppercase">Premium Real Estate</span>
+                                <span className="text-xs font-bold text-gold-dark tracking-[0.2em] uppercase">An Opportunity to Enrich Yourself</span>
                             </div>
 
                             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gold-deep mb-3 leading-tight">
-                                Tamil Nadu's Leading <br className="hidden lg:block" /> Real Estate Brand
+                                Chennai's Best Real Estate & Property <br className="hidden lg:block" /> Consultants
                             </h1>
                             <p className="text-gold-deep/70 text-sm md:text-base font-medium tracking-wide leading-relaxed">
-                                Transforming Dreams into Reality with <span className="text-gold-dark font-bold">Bright Beginnings.</span>
+                                Your trusted guide to Chennai real estate <span className="text-gold-dark font-bold"> Turning bright dreams into reality </span>
                             </p>
                         </div>
 

@@ -5,6 +5,7 @@ import { COMPANY_INFO } from '../constants';
 interface SEOProps {
   title?: string;
   description?: string;
+  keywords?: string;
   canonical?: string;
   type?: string;
   name?: string;
@@ -15,6 +16,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
   title,
   description,
+  keywords,
   canonical,
   type = 'website',
   name = COMPANY_INFO.name,
@@ -30,6 +32,7 @@ const SEO: React.FC<SEOProps> = ({
       {/* Standard Metadata */}
       <title>{siteTitle}</title>
       <meta name="description" content={metaDescription} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={currentUrl} />
 
       {/* Open Graph / Facebook */}

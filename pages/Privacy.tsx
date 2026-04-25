@@ -9,8 +9,8 @@ const Privacy: React.FC = () => {
   return (
     <div className="pt-28 pb-20 min-h-screen bg-cream text-gold-deep">
       <SEO
-        title="Privacy Policy"
-        description="Privacy Policy for Bright Reality. Learn how we collect, use, and protect your information."
+        title="Privacy Policy – Bright Reality | Chennai Real Estate"
+        description="Read the Privacy Policy of Bright Reality, Chennai's top real estate consultancy. Understand how we collect, use, and protect your personal information when you book a site visit or contact us."
         canonical="https://www.kushibusy.in/privacy"
         type="article"
       />

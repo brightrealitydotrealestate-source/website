@@ -1,5 +1,26 @@
+# Bright Reality - kushibusy.in
+# Robots.txt — Allow full crawling of all public content
+
 User-agent: *
 Allow: /
-Disallow: /admin
 
+# Block non-public paths
+Disallow: /admin
+Disallow: /_vite/
+Disallow: /node_modules/
+
+# Crawl-delay for well-behaved bots (seconds)
+Crawl-delay: 5
+
+# Google-specific bot (no crawl delay restriction needed)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Sitemap location
 Sitemap: https://www.kushibusy.in/sitemap.xml

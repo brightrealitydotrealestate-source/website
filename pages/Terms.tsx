@@ -9,8 +9,8 @@ const Terms: React.FC = () => {
   return (
     <div className="pt-28 pb-20 min-h-screen bg-cream text-gold-deep">
       <SEO
-        title="Terms of Service"
-        description="Terms of Service for Bright Reality. Read our terms regarding property listings, intellectual property, and liability."
+        title="Terms of Service – Bright Reality | Chennai Real Estate"
+        description="Read the Terms of Service for Bright Reality. By using kushibusy.in, you agree to our terms on property listings, intellectual property, and user responsibilities."
         canonical="https://www.kushibusy.in/terms"
         type="article"
       />

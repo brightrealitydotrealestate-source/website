@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './Layout';
 import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
 import Gallery from './pages/Gallery';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -18,12 +19,12 @@ const App: React.FC = () => {
             {/* Home serves as a Layout Route for these paths to prevent remounting */}
             <Route element={<Home />}>
               <Route path="/" element={<></>} />
-              <Route path="/aboutus" element={<></>} />
               <Route path="/services" element={<></>} />
               <Route path="/contact" element={<></>} />
               {/* Dynamic route for services at root level */}
               <Route path="/:serviceSlug" element={<></>} />
             </Route>
+            <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

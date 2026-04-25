@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
             to="/"
             className="flex items-center group"
             onClick={(e) => {
-              if (isOnHomePage) {
+              if (location.pathname === '/') {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
@@ -73,17 +73,30 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-10 lg:space-x-12">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-10">
+            {/* Schedule Visit Button (Desktop) */}
+            <button
+              onClick={() => {
+                if (location.pathname === '/') {
+                  // On homepage — scroll to contact section inline
+                  scrollToSection('contact-section', 50);
+                } else {
+                  // On any other page — navigate to homepage contact section
+                  navigate('/');
+                  setTimeout(() => scrollToSection('contact-section', 100), 350);
+                }
+              }}
+              className="mr-2 px-5 py-2 relative overflow-hidden font-bold text-sm text-gold-deep border-2 border-gold/40 shadow-[0_0_20px_rgba(217,177,4,0.6)] hover:shadow-[0_0_30px_rgba(217,177,4,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 rounded-full whitespace-nowrap"
+              style={{ background: 'linear-gradient(135deg, rgba(250, 250, 245, 0.95) 0%, rgba(249, 216, 165, 0.95) 100%)' }}
+            >
+              <span className="relative z-10">Book a Free Site Visit</span>
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 100%)' }} />
+            </button>
+
             <Link
               to="/aboutus"
               className="text-gold-deep hover:text-gold font-medium transition-colors duration-200 uppercase tracking-normal text-sm lg:text-base"
-              onClick={(e) => {
-                if (isOnHomePage) {
-                  e.preventDefault();
-                  navigate('/aboutus');
-                  scrollToSection('about-section', 50);
-                }
-              }}
+              onClick={() => { setServicesOpen(false); }}
             >
               About Us
             </Link>
@@ -170,8 +183,27 @@ const Navbar: React.FC = () => {
             </Link>
           </div >
 
-          {/* Mobile Menu Button */}
-          < div className="md:hidden flex items-center" >
+          {/* Mobile Menu Header Buttons */}
+          <div className="md:hidden flex items-center gap-3">
+            {/* Schedule Visit Button (Mobile) */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (location.pathname === '/') {
+                  scrollToSection('contact-section', 50);
+                } else {
+                  navigate('/');
+                  setTimeout(() => scrollToSection('contact-section', 100), 350);
+                }
+              }}
+              className="px-3 py-1.5 relative overflow-hidden font-bold text-[11px] text-gold-deep border border-gold/40 shadow-[0_0_15px_rgba(217,177,4,0.6)] hover:shadow-[0_0_25px_rgba(217,177,4,0.9)] active:scale-95 transition-all duration-300 rounded-full whitespace-nowrap"
+              style={{ background: 'linear-gradient(135deg, rgba(250, 250, 245, 0.95) 0%, rgba(249, 216, 165, 0.95) 100%)' }}
+            >
+              <span className="relative z-10 tracking-wide">Book a Free Site Visit</span>
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 100%)' }} />
+            </button>
+
+            {/* Hamburger Button */}
             <button
               onClick={() => {
                 setMobileMenuOpen(!mobileMenuOpen);
@@ -223,14 +255,7 @@ const Navbar: React.FC = () => {
 
           <Link
             to="/aboutus"
-            onClick={(e) => {
-              setMobileMenuOpen(false);
-              if (isOnHomePage) {
-                e.preventDefault();
-                navigate('/aboutus');
-                scrollToSection('about-section', 50);
-              }
-            }}
+            onClick={() => { setMobileMenuOpen(false); }}
             className="text-gold-deep text-lg font-medium hover:text-gold uppercase tracking-wider transition-colors"
           >
             About Us
