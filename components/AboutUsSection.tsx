@@ -112,7 +112,12 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ isHomePage = false, def
                 <div className={`relative ${baseTransition} ${isActive ? activeClass : inactiveClass}`} style={{ transitionDelay: '200ms' }}>
                     <div
                         className="text-base md:text-lg text-gold-deep/80 leading-relaxed font-sans"
-                        style={isHomePage ? { maxHeight: '22rem', overflow: 'hidden' } : {}}
+                        style={isHomePage ? {
+                            maxHeight: '28rem',
+                            overflow: 'hidden',
+                            WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
+                            maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)'
+                        } : {}}
                     >
                         {type === 'company' ? (
                             <>
@@ -170,21 +175,7 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ isHomePage = false, def
                         )}
                     </div>
 
-                    {/* Soft fade overlay — crawler-safe gradient div */}
-                    {isHomePage && (
-                        <div
-                            aria-hidden="true"
-                            style={{
-                                position: 'absolute',
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                height: '7rem',
-                                background: 'linear-gradient(to top, #fff 30%, rgba(255,255,255,0.5) 70%, transparent 100%)',
-                                pointerEvents: 'none'
-                            }}
-                        />
-                    )}
+                    {/* CSS mask applied directly to container above for soft fade without solid blockers */}
                 </div>
 
                 {/* Footer tagline — only on dedicated page */}

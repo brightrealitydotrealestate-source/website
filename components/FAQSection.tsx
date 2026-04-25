@@ -91,20 +91,16 @@ const FAQSection: React.FC = () => {
                                 </span>
                             </button>
 
-                            {/* Animated content wrapper using grid rows - buttery smooth, no border flash */}
+                            {/* Grid-rows accordion — separator is a standalone element, never flashes */}
                             <div
                                 className={`grid transition-all duration-300 ease-in-out ${
-                                    openId === item.id ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                                    openId === item.id ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                                 }`}
                             >
                                 <div className="overflow-hidden">
-                                    <div className={`p-5 md:p-6 pt-0 border-t border-dashed transition-colors duration-300 ${
-                                        openId === item.id ? 'border-gold/20' : 'border-transparent'
-                                    }`}>
-                                        <p className="text-base text-gold-deep/70 leading-relaxed font-sans">
-                                            {item.answer}
-                                        </p>
-                                    </div>
+                                    <p className="px-5 md:px-6 py-4 text-base text-gold-deep/70 leading-relaxed font-sans">
+                                        {item.answer}
+                                    </p>
                                 </div>
                             </div>
                         </div>
