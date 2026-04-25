@@ -29,7 +29,7 @@ const HeroHighlight: React.FC = () => {
                         <div className="flex-shrink-0 text-center lg:text-left lg:max-w-md">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-4">
                                 <Star className="w-3.5 h-3.5 text-gold-dark animate-spin-slow" />
-                                <span className="text-xs font-bold text-gold-dark tracking-[0.2em] uppercase">An Opportunity to Enrich Yourself</span>
+                                <span className="text-xs font-bold text-gold-dark tracking-[0.2em] uppercase"> Premium Real Estate </span>
                             </div>
 
                             <h1 className="text-3xl md:text-4xl font-serif font-bold text-gold-deep mb-3 leading-tight">
