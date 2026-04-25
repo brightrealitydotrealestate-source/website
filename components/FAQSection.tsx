@@ -91,16 +91,20 @@ const FAQSection: React.FC = () => {
                                 </span>
                             </button>
 
+                            {/* Animated content wrapper using grid rows - buttery smooth, no border flash */}
                             <div
-                                className={`
-                  transition-all duration-300 ease-in-out
-                  ${openId === item.id ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}
-                `}
+                                className={`grid transition-all duration-300 ease-in-out ${
+                                    openId === item.id ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                                }`}
                             >
-                                <div className="p-5 md:p-6 pt-0 border-t border-dashed border-gold/20">
-                                    <p className="text-base text-gold-deep/70 leading-relaxed font-sans">
-                                        {item.answer}
-                                    </p>
+                                <div className="overflow-hidden">
+                                    <div className={`p-5 md:p-6 pt-0 border-t border-dashed transition-colors duration-300 ${
+                                        openId === item.id ? 'border-gold/20' : 'border-transparent'
+                                    }`}>
+                                        <p className="text-base text-gold-deep/70 leading-relaxed font-sans">
+                                            {item.answer}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

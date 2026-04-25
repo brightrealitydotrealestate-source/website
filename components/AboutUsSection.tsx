@@ -111,13 +111,8 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ isHomePage = false, def
                 {/* Body Text — clipped on homepage with fade */}
                 <div className={`relative ${baseTransition} ${isActive ? activeClass : inactiveClass}`} style={{ transitionDelay: '200ms' }}>
                     <div
-                        className={`text-base md:text-lg text-gold-deep/80 leading-relaxed font-sans`}
-                        style={isHomePage ? {
-                            maxHeight: '22rem',
-                            overflow: 'hidden',
-                            WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
-                            maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)'
-                        } : {}}
+                        className="text-base md:text-lg text-gold-deep/80 leading-relaxed font-sans"
+                        style={isHomePage ? { maxHeight: '22rem', overflow: 'hidden' } : {}}
                     >
                         {type === 'company' ? (
                             <>
@@ -175,7 +170,21 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ isHomePage = false, def
                         )}
                     </div>
 
-                    {/* CSS mask handles the fade — no overlay div needed */}
+                    {/* Soft fade overlay — crawler-safe gradient div */}
+                    {isHomePage && (
+                        <div
+                            aria-hidden="true"
+                            style={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                height: '7rem',
+                                background: 'linear-gradient(to top, #fff 30%, rgba(255,255,255,0.5) 70%, transparent 100%)',
+                                pointerEvents: 'none'
+                            }}
+                        />
+                    )}
                 </div>
 
                 {/* Footer tagline — only on dedicated page */}

@@ -23,9 +23,13 @@ const SEO: React.FC<SEOProps> = ({
   image = '/assets/images/Golden.png', // Default OG image
   schema
 }) => {
-  const siteTitle = title ? `${title} | ${COMPANY_INFO.name}` : `${COMPANY_INFO.name} | ${COMPANY_INFO.tagline}`;
+  // Don't append brand if title already contains it (avoids "... | Bright Reality | Bright Reality")
+  const alreadyBranded = title ? title.includes(COMPANY_INFO.name) || title.includes('Kushi Busy') : false;
+  const siteTitle = title
+    ? alreadyBranded ? title : `${title} | ${COMPANY_INFO.name}`
+    : `${COMPANY_INFO.name} | ${COMPANY_INFO.tagline}`;
   const metaDescription = description || "Bright Reality provides premium real estate services in Chennai, including plots, villas, flats, and registration documentation.";
-  const currentUrl = canonical || window.location.href;
+  const currentUrl = canonical || (typeof window !== 'undefined' ? window.location.href : 'https://www.kushibusy.in');
 
   return (
     <Helmet>

@@ -327,7 +327,7 @@ const Gallery: React.FC = () => {
   return (
     <div className="pt-24 md:pt-32 pb-8 md:pb-12 min-h-screen bg-cream">
       <SEO
-        title="Property Gallery – Real Estate Projects in Chennai | Bright Reality"
+        title="Property Gallery – Real Estate Projects in Chennai | Kushi Busy"
         description="Browse Bright Reality's photo & video gallery of DTCP & CMDA approved plots, luxury villas, gated communities, and independent houses across Chennai – Avadi, Tambaram, Poonamallee, Vadapalani and more."
         keywords="property photos chennai, plot layout images chennai, gated community photos, villa photos chennai, apartment gallery chennai, bright reality properties, DTCP plot images, new house photos chennai, real estate gallery vadapalani, independent house photos chennai"
         canonical="https://www.kushibusy.in/gallery"

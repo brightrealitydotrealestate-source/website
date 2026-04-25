@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AboutUsSection from '../components/AboutUsSection';
 import DetailedReviews from '../components/DetailedReviews';
@@ -6,17 +6,22 @@ import SEO from '../components/SEO';
 
 const AboutUs: React.FC = () => {
   const location = useLocation();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    // Small delay ensures CSS transitions always fire from the initial state
+    const t = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(t);
   }, []);
 
-  // Check if they came in via a specific tab parameter
   const queryParams = new URLSearchParams(location.search);
   const initialTab = queryParams.get('tab') as 'company' | 'founder' | null;
 
   return (
-    <div className="w-full bg-cream pt-[80px] md:pt-[105px]">
+    <div className={`w-full bg-cream pt-[80px] md:pt-[105px] transition-opacity duration-500 ${
+      mounted ? 'opacity-100' : 'opacity-0'
+    }`}>
       <SEO
         title="About Us – Bright Reality | Chennai's Trusted Real Estate Experts"
         description="Learn about Bright Reality – Chennai's premier real estate consultancy led by founder Mr. Nazeer Ahamed S. 100,000+ plot registrations. Serving buyers across Vadapalani, Avadi, Tambaram & all Chennai suburbs. DTCP & CMDA approved properties only."
